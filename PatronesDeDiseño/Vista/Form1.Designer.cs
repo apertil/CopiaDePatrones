@@ -1,4 +1,4 @@
-﻿namespace PatronesDeDiseño
+﻿namespace PatronesDeDiseño.Vista
 {
     partial class FrmPatronMain
     {
