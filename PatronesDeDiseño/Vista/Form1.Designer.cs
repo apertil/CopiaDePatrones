@@ -156,13 +156,14 @@
             // nuevoTipoToolStripMenuItem
             // 
             this.nuevoTipoToolStripMenuItem.Name = "nuevoTipoToolStripMenuItem";
-            this.nuevoTipoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.nuevoTipoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.nuevoTipoToolStripMenuItem.Text = "Nuevo Tipo";
+            this.nuevoTipoToolStripMenuItem.Click += new System.EventHandler(this.nuevoTipoToolStripMenuItem_Click);
             // 
             // buscarTipoToolStripMenuItem
             // 
             this.buscarTipoToolStripMenuItem.Name = "buscarTipoToolStripMenuItem";
-            this.buscarTipoToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.buscarTipoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.buscarTipoToolStripMenuItem.Text = "Buscar Tipo";
             // 
             // caracterisicasToolStripMenuItem

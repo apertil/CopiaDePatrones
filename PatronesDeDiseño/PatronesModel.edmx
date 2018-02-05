@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelosPuntoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutorPatron">
+          <Key>
+            <PropertyRef Name="IdAutorPatron" />
+          </Key>
+          <Property Name="IdAutorPatron" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreAutor" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Lanas">
+          <Key>
+            <PropertyRef Name="IdLana" />
+          </Key>
+          <Property Name="IdLana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreLana" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Patrones">
+          <Key>
+            <PropertyRef Name="IdNombrePatron" />
+          </Key>
+          <Property Name="IdNombrePatron" Type="int" Nullable="false" />
+          <Property Name="NombrePatron" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdAutorPatron" Type="int" />
+          <Property Name="IdLana" Type="int" />
+          <Property Name="IdPrendas" Type="int" />
+          <Property Name="IdRevistas" Type="int" />
+          <Property Name="IdTiposCaract" Type="int" />
+          <Property Name="IdTiposdeTejer" Type="int" />
+          <Property Name="Patron" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prendas">
+          <Key>
+            <PropertyRef Name="IdPrendas" />
+          </Key>
+          <Property Name="IdPrendas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombrePrendas" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Revistas">
+          <Key>
+            <PropertyRef Name="IdRevistas" />
+          </Key>
+          <Property Name="IdRevistas" Type="int" Nullable="false" />
+          <Property Name="NombreRevista" Type="nvarchar" MaxLength="50" />
+          <Property Name="FechaRevista" Type="date" />
+        </EntityType>
+        <EntityType Name="TiposCaracteristicas">
+          <Key>
+            <PropertyRef Name="IdTiposCaract" />
+          </Key>
+          <Property Name="IdTiposCaract" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCaracteristicas" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TiposDeTejer">
+          <Key>
+            <PropertyRef Name="IdTiposTejer" />
+          </Key>
+          <Property Name="IdTiposTejer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreDeTejer" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Patrones_AutorPatron">
+          <End Role="AutorPatron" Type="Self.AutorPatron" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutorPatron">
+              <PropertyRef Name="IdAutorPatron" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdAutorPatron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Lanas">
+          <End Role="Lanas" Type="Self.Lanas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lanas">
+              <PropertyRef Name="IdLana" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdLana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Prendas">
+          <End Role="Prendas" Type="Self.Prendas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prendas">
+              <PropertyRef Name="IdPrendas" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdPrendas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Revistas">
+          <End Role="Revistas" Type="Self.Revistas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Revistas">
+              <PropertyRef Name="IdRevistas" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdRevistas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_TiposCaracteristicas">
+          <End Role="TiposCaracteristicas" Type="Self.TiposCaracteristicas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposCaracteristicas">
+              <PropertyRef Name="IdTiposCaract" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdTiposCaract" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_TiposDeTejer">
+          <End Role="TiposDeTejer" Type="Self.TiposDeTejer" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDeTejer">
+              <PropertyRef Name="IdTiposTejer" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdTiposdeTejer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelosPuntoModelStoreContainer">
+          <EntitySet Name="AutorPatron" EntityType="Self.AutorPatron" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lanas" EntityType="Self.Lanas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patrones" EntityType="Self.Patrones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prendas" EntityType="Self.Prendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revistas" EntityType="Self.Revistas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposCaracteristicas" EntityType="Self.TiposCaracteristicas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TiposDeTejer" EntityType="Self.TiposDeTejer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Patrones_AutorPatron" Association="Self.FK_Patrones_AutorPatron">
+            <End Role="AutorPatron" EntitySet="AutorPatron" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Lanas" Association="Self.FK_Patrones_Lanas">
+            <End Role="Lanas" EntitySet="Lanas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Prendas" Association="Self.FK_Patrones_Prendas">
+            <End Role="Prendas" EntitySet="Prendas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Revistas" Association="Self.FK_Patrones_Revistas">
+            <End Role="Revistas" EntitySet="Revistas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_TiposCaracteristicas" Association="Self.FK_Patrones_TiposCaracteristicas">
+            <End Role="TiposCaracteristicas" EntitySet="TiposCaracteristicas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_TiposDeTejer" Association="Self.FK_Patrones_TiposDeTejer">
+            <End Role="TiposDeTejer" EntitySet="TiposDeTejer" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ModelosPuntoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutorPatron">
+          <Key>
+            <PropertyRef Name="IdAutorPatron" />
+          </Key>
+          <Property Name="IdAutorPatron" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreAutor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_AutorPatron" FromRole="AutorPatron" ToRole="Patrones" />
+        </EntityType>
+        <EntityType Name="Lanas">
+          <Key>
+            <PropertyRef Name="IdLana" />
+          </Key>
+          <Property Name="IdLana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreLana" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_Lanas" FromRole="Lanas" ToRole="Patrones" />
+        </EntityType>
+        <EntityType Name="Patrones">
+          <Key>
+            <PropertyRef Name="IdNombrePatron" />
+          </Key>
+          <Property Name="IdNombrePatron" Type="Int32" Nullable="false" />
+          <Property Name="NombrePatron" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdAutorPatron" Type="Int32" />
+          <Property Name="IdLana" Type="Int32" />
+          <Property Name="IdPrendas" Type="Int32" />
+          <Property Name="IdRevistas" Type="Int32" />
+          <Property Name="IdTiposCaract" Type="Int32" />
+          <Property Name="IdTiposdeTejer" Type="Int32" />
+          <Property Name="Patron" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="AutorPatron" Relationship="Self.FK_Patrones_AutorPatron" FromRole="Patrones" ToRole="AutorPatron" />
+          <NavigationProperty Name="Lanas" Relationship="Self.FK_Patrones_Lanas" FromRole="Patrones" ToRole="Lanas" />
+          <NavigationProperty Name="Prendas" Relationship="Self.FK_Patrones_Prendas" FromRole="Patrones" ToRole="Prendas" />
+          <NavigationProperty Name="Revistas" Relationship="Self.FK_Patrones_Revistas" FromRole="Patrones" ToRole="Revistas" />
+          <NavigationProperty Name="TiposCaracteristicas" Relationship="Self.FK_Patrones_TiposCaracteristicas" FromRole="Patrones" ToRole="TiposCaracteristicas" />
+          <NavigationProperty Name="TiposDeTejer" Relationship="Self.FK_Patrones_TiposDeTejer" FromRole="Patrones" ToRole="TiposDeTejer" />
+        </EntityType>
+        <EntityType Name="Prendas">
+          <Key>
+            <PropertyRef Name="IdPrendas" />
+          </Key>
+          <Property Name="IdPrendas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombrePrendas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_Prendas" FromRole="Prendas" ToRole="Patrones" />
+        </EntityType>
+        <EntityType Name="Revistas">
+          <Key>
+            <PropertyRef Name="IdRevistas" />
+          </Key>
+          <Property Name="IdRevistas" Type="Int32" Nullable="false" />
+          <Property Name="NombreRevista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FechaRevista" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_Revistas" FromRole="Revistas" ToRole="Patrones" />
+        </EntityType>
+        <EntityType Name="TiposCaracteristicas">
+          <Key>
+            <PropertyRef Name="IdTiposCaract" />
+          </Key>
+          <Property Name="IdTiposCaract" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCaracteristicas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_TiposCaracteristicas" FromRole="TiposCaracteristicas" ToRole="Patrones" />
+        </EntityType>
+        <EntityType Name="TiposDeTejer">
+          <Key>
+            <PropertyRef Name="IdTiposTejer" />
+          </Key>
+          <Property Name="IdTiposTejer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreDeTejer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_TiposDeTejer" FromRole="TiposDeTejer" ToRole="Patrones" />
+        </EntityType>
+        <Association Name="FK_Patrones_AutorPatron">
+          <End Role="AutorPatron" Type="Self.AutorPatron" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutorPatron">
+              <PropertyRef Name="IdAutorPatron" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdAutorPatron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Lanas">
+          <End Role="Lanas" Type="Self.Lanas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lanas">
+              <PropertyRef Name="IdLana" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdLana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Prendas">
+          <End Role="Prendas" Type="Self.Prendas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prendas">
+              <PropertyRef Name="IdPrendas" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdPrendas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_Revistas">
+          <End Role="Revistas" Type="Self.Revistas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Revistas">
+              <PropertyRef Name="IdRevistas" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdRevistas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_TiposCaracteristicas">
+          <End Role="TiposCaracteristicas" Type="Self.TiposCaracteristicas" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposCaracteristicas">
+              <PropertyRef Name="IdTiposCaract" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdTiposCaract" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_TiposDeTejer">
+          <End Role="TiposDeTejer" Type="Self.TiposDeTejer" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TiposDeTejer">
+              <PropertyRef Name="IdTiposTejer" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdTiposdeTejer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PatronesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutorPatron" EntityType="Self.AutorPatron" />
+          <EntitySet Name="Lanas" EntityType="Self.Lanas" />
+          <EntitySet Name="Patrones" EntityType="Self.Patrones" />
+          <EntitySet Name="Prendas" EntityType="Self.Prendas" />
+          <EntitySet Name="Revistas" EntityType="Self.Revistas" />
+          <EntitySet Name="TiposCaracteristicas" EntityType="Self.TiposCaracteristicas" />
+          <EntitySet Name="TiposDeTejer" EntityType="Self.TiposDeTejer" />
+          <AssociationSet Name="FK_Patrones_AutorPatron" Association="Self.FK_Patrones_AutorPatron">
+            <End Role="AutorPatron" EntitySet="AutorPatron" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Lanas" Association="Self.FK_Patrones_Lanas">
+            <End Role="Lanas" EntitySet="Lanas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Prendas" Association="Self.FK_Patrones_Prendas">
+            <End Role="Prendas" EntitySet="Prendas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_Revistas" Association="Self.FK_Patrones_Revistas">
+            <End Role="Revistas" EntitySet="Revistas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_TiposCaracteristicas" Association="Self.FK_Patrones_TiposCaracteristicas">
+            <End Role="TiposCaracteristicas" EntitySet="TiposCaracteristicas" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_TiposDeTejer" Association="Self.FK_Patrones_TiposDeTejer">
+            <End Role="TiposDeTejer" EntitySet="TiposDeTejer" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelosPuntoModelStoreContainer" CdmEntityContainer="PatronesEntities">
+          <EntitySetMapping Name="AutorPatron">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.AutorPatron">
+              <MappingFragment StoreEntitySet="AutorPatron">
+                <ScalarProperty Name="IdAutorPatron" ColumnName="IdAutorPatron" />
+                <ScalarProperty Name="NombreAutor" ColumnName="NombreAutor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lanas">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.Lanas">
+              <MappingFragment StoreEntitySet="Lanas">
+                <ScalarProperty Name="IdLana" ColumnName="IdLana" />
+                <ScalarProperty Name="NombreLana" ColumnName="NombreLana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patrones">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.Patrones">
+              <MappingFragment StoreEntitySet="Patrones">
+                <ScalarProperty Name="IdNombrePatron" ColumnName="IdNombrePatron" />
+                <ScalarProperty Name="NombrePatron" ColumnName="NombrePatron" />
+                <ScalarProperty Name="IdAutorPatron" ColumnName="IdAutorPatron" />
+                <ScalarProperty Name="IdLana" ColumnName="IdLana" />
+                <ScalarProperty Name="IdPrendas" ColumnName="IdPrendas" />
+                <ScalarProperty Name="IdRevistas" ColumnName="IdRevistas" />
+                <ScalarProperty Name="IdTiposCaract" ColumnName="IdTiposCaract" />
+                <ScalarProperty Name="IdTiposdeTejer" ColumnName="IdTiposdeTejer" />
+                <ScalarProperty Name="Patron" ColumnName="Patron" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prendas">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.Prendas">
+              <MappingFragment StoreEntitySet="Prendas">
+                <ScalarProperty Name="IdPrendas" ColumnName="IdPrendas" />
+                <ScalarProperty Name="NombrePrendas" ColumnName="NombrePrendas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revistas">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.Revistas">
+              <MappingFragment StoreEntitySet="Revistas">
+                <ScalarProperty Name="IdRevistas" ColumnName="IdRevistas" />
+                <ScalarProperty Name="NombreRevista" ColumnName="NombreRevista" />
+                <ScalarProperty Name="FechaRevista" ColumnName="FechaRevista" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposCaracteristicas">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.TiposCaracteristicas">
+              <MappingFragment StoreEntitySet="TiposCaracteristicas">
+                <ScalarProperty Name="IdTiposCaract" ColumnName="IdTiposCaract" />
+                <ScalarProperty Name="NombreCaracteristicas" ColumnName="NombreCaracteristicas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposDeTejer">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.TiposDeTejer">
+              <MappingFragment StoreEntitySet="TiposDeTejer">
+                <ScalarProperty Name="IdTiposTejer" ColumnName="IdTiposTejer" />
+                <ScalarProperty Name="NombreDeTejer" ColumnName="NombreDeTejer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

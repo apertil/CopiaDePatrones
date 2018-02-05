@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ac0a9bd2c8694f5bb7ea7c66fb053738" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelosPuntoModel.AutorPatron" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.Lanas" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.Patrones" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.Prendas" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.Revistas" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.TiposCaracteristicas" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.TiposDeTejer" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_AutorPatron" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Lanas" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Prendas" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Revistas" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposCaracteristicas" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposDeTejer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

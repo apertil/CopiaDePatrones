@@ -32,8 +32,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +54,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutorPatron.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lanas.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Consts.cs" />
+    <Compile Include="Modelo\ModelTiposPunto.cs" />
+    <Compile Include="Patrones.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatronesModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatronesModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatronesModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PatronesModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PatronesModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Prendas.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Revistas.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposCaracteristicas.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TiposDeTejer.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +100,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\FrmInsTiposPunto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\FrmInsTiposPunto.Designer.cs">
+      <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Vista\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -67,6 +119,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vista\FrmInsTiposPunto.resx">
+      <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="PatronesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PatronesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="PatronesModel.edmx.diagram">
+      <DependentUpon>PatronesModel.edmx</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -84,8 +147,20 @@
     <None Include="Recursos\km-sub.jpg" />
     <None Include="Recursos\KnittingBasket.jpg" />
     <None Include="Recursos\cotton-merino.jpg" />
+    <Content Include="PatronesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PatronesModel.Context.cs</LastGenOutput>
+      <DependentUpon>PatronesModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="PatronesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PatronesModel.edmx</DependentUpon>
+      <LastGenOutput>PatronesModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Recursos\moda.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

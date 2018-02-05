@@ -64,9 +64,24 @@ namespace PatronesDeDiseño.Vista
         #endregion
 
         #region "6.- Eventos privados de la clase"
+        /// <summary>
+        /// Cierra el programa
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        /// <summary>
+        /// Insertar tipos de punto
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void nuevoTipoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInsTiposPunto a = new FrmInsTiposPunto();
+            a.Show();
         }
         #endregion
 
@@ -74,6 +89,7 @@ namespace PatronesDeDiseño.Vista
 
 
         #endregion
+
 
     }
 }
