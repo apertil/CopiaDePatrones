@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PatronesDeDiseño
 {
-    public partial class Form1 : Form
+    public partial class FrmPatronMain : Form
     {
-        public Form1()
+        public FrmPatronMain()
         {
             InitializeComponent();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
