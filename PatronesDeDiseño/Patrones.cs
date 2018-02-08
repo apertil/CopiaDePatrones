@@ -23,6 +23,7 @@ namespace PatronesDeDiseño
         public Nullable<int> IdTiposCaract { get; set; }
         public Nullable<int> IdTiposdeTejer { get; set; }
         public byte[] Patron { get; set; }
+        public Nullable<int> IdGenEdad { get; set; }
     
         public virtual AutorPatron AutorPatron { get; set; }
         public virtual Lanas Lanas { get; set; }
@@ -30,5 +31,6 @@ namespace PatronesDeDiseño
         public virtual Revistas Revistas { get; set; }
         public virtual TiposCaracteristicas TiposCaracteristicas { get; set; }
         public virtual TiposDeTejer TiposDeTejer { get; set; }
+        public virtual GeneroEdad GeneroEdad { get; set; }
     }
 }

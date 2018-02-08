@@ -83,6 +83,8 @@ namespace PatronesDeDiseño.Vista
             FrmInsTiposPunto a = new FrmInsTiposPunto();
             a.Show();
         }
+
+
         #endregion
 
         #region "7.- Metodos privados de la clase"
@@ -90,6 +92,6 @@ namespace PatronesDeDiseño.Vista
 
         #endregion
 
-
+        
     }
 }

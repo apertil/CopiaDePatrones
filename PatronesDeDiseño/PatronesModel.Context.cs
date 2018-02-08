@@ -32,5 +32,6 @@ namespace PatronesDeDiseño
         public virtual DbSet<Revistas> Revistas { get; set; }
         public virtual DbSet<TiposCaracteristicas> TiposCaracteristicas { get; set; }
         public virtual DbSet<TiposDeTejer> TiposDeTejer { get; set; }
+        public virtual DbSet<GeneroEdad> GeneroEdad { get; set; }
     }
 }

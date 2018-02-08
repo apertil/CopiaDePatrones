@@ -12,6 +12,13 @@
           <Property Name="IdAutorPatron" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreAutor" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="GeneroEdad">
+          <Key>
+            <PropertyRef Name="IdGenEd" />
+          </Key>
+          <Property Name="IdGenEd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenEdad" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="Lanas">
           <Key>
             <PropertyRef Name="IdLana" />
@@ -31,6 +38,7 @@
           <Property Name="IdRevistas" Type="int" />
           <Property Name="IdTiposCaract" Type="int" />
           <Property Name="IdTiposdeTejer" Type="int" />
+          <Property Name="IdGenEdad" Type="int" />
           <Property Name="Patron" Type="varbinary(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Prendas">
@@ -71,6 +79,18 @@
             </Principal>
             <Dependent Role="Patrones">
               <PropertyRef Name="IdAutorPatron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patrones_GeneroEdad">
+          <End Role="GeneroEdad" Type="Self.GeneroEdad" Multiplicity="0..1" />
+          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneroEdad">
+              <PropertyRef Name="IdGenEd" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdGenEdad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -136,6 +156,7 @@
         </Association>
         <EntityContainer Name="ModelosPuntoModelStoreContainer">
           <EntitySet Name="AutorPatron" EntityType="Self.AutorPatron" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeneroEdad" EntityType="Self.GeneroEdad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lanas" EntityType="Self.Lanas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patrones" EntityType="Self.Patrones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prendas" EntityType="Self.Prendas" Schema="dbo" store:Type="Tables" />
@@ -144,6 +165,10 @@
           <EntitySet Name="TiposDeTejer" EntityType="Self.TiposDeTejer" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Patrones_AutorPatron" Association="Self.FK_Patrones_AutorPatron">
             <End Role="AutorPatron" EntitySet="AutorPatron" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patrones_GeneroEdad" Association="Self.FK_Patrones_GeneroEdad">
+            <End Role="GeneroEdad" EntitySet="GeneroEdad" />
             <End Role="Patrones" EntitySet="Patrones" />
           </AssociationSet>
           <AssociationSet Name="FK_Patrones_Lanas" Association="Self.FK_Patrones_Lanas">
@@ -206,6 +231,8 @@
           <NavigationProperty Name="Revistas" Relationship="Self.FK_Patrones_Revistas" FromRole="Patrones" ToRole="Revistas" />
           <NavigationProperty Name="TiposCaracteristicas" Relationship="Self.FK_Patrones_TiposCaracteristicas" FromRole="Patrones" ToRole="TiposCaracteristicas" />
           <NavigationProperty Name="TiposDeTejer" Relationship="Self.FK_Patrones_TiposDeTejer" FromRole="Patrones" ToRole="TiposDeTejer" />
+          <Property Name="IdGenEdad" Type="Int32" />
+          <NavigationProperty Name="GeneroEdad" Relationship="ModelosPuntoModel.FK_Patrones_GeneroEdad" FromRole="Patrones" ToRole="GeneroEdad" />
         </EntityType>
         <EntityType Name="Prendas">
           <Key>
@@ -344,7 +371,32 @@
             <End Role="TiposDeTejer" EntitySet="TiposDeTejer" />
             <End Role="Patrones" EntitySet="Patrones" />
           </AssociationSet>
+          <EntitySet Name="GeneroEdad" EntityType="ModelosPuntoModel.GeneroEdad" />
+          <AssociationSet Name="FK_Patrones_GeneroEdad" Association="ModelosPuntoModel.FK_Patrones_GeneroEdad">
+            <End Role="GeneroEdad" EntitySet="GeneroEdad" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="GeneroEdad">
+          <Key>
+            <PropertyRef Name="IdGenEd" />
+          </Key>
+          <Property Name="IdGenEd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenEdad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="ModelosPuntoModel.FK_Patrones_GeneroEdad" FromRole="GeneroEdad" ToRole="Patrones" />
+        </EntityType>
+        <Association Name="FK_Patrones_GeneroEdad">
+          <End Type="ModelosPuntoModel.GeneroEdad" Role="GeneroEdad" Multiplicity="0..1" />
+          <End Type="ModelosPuntoModel.Patrones" Role="Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GeneroEdad">
+              <PropertyRef Name="IdGenEd" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdGenEdad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,6 +422,7 @@
           <EntitySetMapping Name="Patrones">
             <EntityTypeMapping TypeName="ModelosPuntoModel.Patrones">
               <MappingFragment StoreEntitySet="Patrones">
+                <ScalarProperty Name="IdGenEdad" ColumnName="IdGenEdad" />
                 <ScalarProperty Name="IdNombrePatron" ColumnName="IdNombrePatron" />
                 <ScalarProperty Name="NombrePatron" ColumnName="NombrePatron" />
                 <ScalarProperty Name="IdAutorPatron" ColumnName="IdAutorPatron" />
@@ -412,6 +465,14 @@
               <MappingFragment StoreEntitySet="TiposDeTejer">
                 <ScalarProperty Name="IdTiposTejer" ColumnName="IdTiposTejer" />
                 <ScalarProperty Name="NombreDeTejer" ColumnName="NombreDeTejer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeneroEdad">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.GeneroEdad">
+              <MappingFragment StoreEntitySet="GeneroEdad">
+                <ScalarProperty Name="GenEdad" ColumnName="GenEdad" />
+                <ScalarProperty Name="IdGenEd" ColumnName="IdGenEd" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

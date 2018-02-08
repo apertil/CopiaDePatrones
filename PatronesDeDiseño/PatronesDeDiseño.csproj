@@ -57,11 +57,16 @@
     <Compile Include="AutorPatron.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GeneroEdad.cs">
+      <DependentUpon>PatronesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Lanas.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Consts.cs" />
     <Compile Include="Modelo\ModelTiposPunto.cs" />
+    <Compile Include="Negocio\ControlTipDeTejer.cs" />
+    <Compile Include="Negocio\PatronEntit.cs" />
     <Compile Include="Patrones.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>

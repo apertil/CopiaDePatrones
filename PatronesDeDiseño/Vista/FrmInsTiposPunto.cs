@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatronesDeDiseño.Negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +13,7 @@ namespace PatronesDeDiseño.Vista
 {
     public partial class FrmInsTiposPunto : Form
     {
-        private PatronesEntities db = new PatronesEntities();
-
+       
         public FrmInsTiposPunto()
         {
             InitializeComponent();
@@ -26,20 +26,10 @@ namespace PatronesDeDiseño.Vista
 
         private void btnInsertTipoPunto_Click(object sender, EventArgs e)
         {
-            TiposDeTejer tiposdetejer = new TiposDeTejer();
-            tiposdetejer.NombreDeTejer = txtintippunt.Text;
-            db.TiposDeTejer.Add(tiposdetejer);
-            db.SaveChanges();
 
-        }
+          ControlTipDeTejer.ModificarTiposDeTejer(txtintippunt.Text);
+          txtintippunt.Text = null;
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
 
     }

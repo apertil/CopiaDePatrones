@@ -18,6 +18,8 @@
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Revistas" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposCaracteristicas" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposDeTejer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.GeneroEdad" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_GeneroEdad" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
