@@ -13,9 +13,9 @@ namespace PatronesDeDiseño
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PatronesEntities : DbContext
+    public partial class contexto : DbContext
     {
-        public PatronesEntities()
+        public contexto()
             : base("name=PatronesEntities")
         {
         }

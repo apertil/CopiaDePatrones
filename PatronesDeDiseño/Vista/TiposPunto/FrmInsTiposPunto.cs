@@ -1,4 +1,5 @@
-﻿using PatronesDeDiseño.Negocio;
+﻿using PatronesDeDiseño.Modelo;
+using PatronesDeDiseño.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PatronesDeDiseño.Vista
+namespace PatronesDeDiseño.Vista.TiposPunto
 {
     public partial class FrmInsTiposPunto : Form
     {
@@ -28,8 +29,16 @@ namespace PatronesDeDiseño.Vista
         {
 
           ControlTipDeTejer.ModificarTiposDeTejer(txtintippunt.Text);
-          txtintippunt.Text = null;
-
+            if (ControlTipDeTejer.Result)
+            {
+                MessageBox.Show(Consts.Tptejer + Consts.Inercionok, "Insercion correcta", MessageBoxButtons.OK);
+                txtintippunt.Text = null;
+            }
+            else
+            {
+                MessageBox.Show(Consts.Tptejer + Consts.InercionNoOk, "Insercion incorrecta", MessageBoxButtons.OK);
+                MessageBox.Show(ControlTipDeTejer.ResultException, "Insercion Incorrecta", MessageBoxButtons.OK);
+            }
         }
 
     }

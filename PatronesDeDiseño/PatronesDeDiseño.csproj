@@ -64,7 +64,8 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Consts.cs" />
-    <Compile Include="Modelo\ModelTiposPunto.cs" />
+    <Compile Include="Modelo\ModelEntidades.cs" />
+    <Compile Include="Negocio\ControlLanas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
     <Compile Include="Negocio\PatronEntit.cs" />
     <Compile Include="Patrones.cs">
@@ -97,6 +98,12 @@
     <Compile Include="TiposDeTejer.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Vista\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,12 +112,39 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Vista\FrmInsTiposPunto.cs">
+    <Compile Include="Vista\Lanas\FrmBorrarLana.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vista\FrmInsTiposPunto.Designer.cs">
+    <Compile Include="Vista\Lanas\FrmBorrarLana.Designer.cs">
+      <DependentUpon>FrmBorrarLana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmConsultaLanas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmConsultaLanas.Designer.cs">
+      <DependentUpon>FrmConsultaLanas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmModificarLanas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmModificarLanas.Designer.cs">
+      <DependentUpon>FrmModificarLanas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmInsLana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Lanas\FrmInsLana.Designer.cs">
+      <DependentUpon>FrmInsLana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmInsTiposPunto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmInsTiposPunto.Designer.cs">
       <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vista\AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -124,7 +158,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Vista\FrmInsTiposPunto.resx">
+    <EmbeddedResource Include="Vista\Lanas\FrmBorrarLana.resx">
+      <DependentUpon>FrmBorrarLana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Lanas\FrmConsultaLanas.resx">
+      <DependentUpon>FrmConsultaLanas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Lanas\FrmModificarLanas.resx">
+      <DependentUpon>FrmModificarLanas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Lanas\FrmInsLana.resx">
+      <DependentUpon>FrmInsLana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TiposPunto\FrmInsTiposPunto.resx">
       <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="PatronesModel.edmx">
@@ -149,6 +195,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Recursos\Lana.jpg" />
+    <None Include="Recursos\Lana2.jpg" />
+    <Content Include="Recursos\Ok.png" />
+    <Content Include="Recursos\save.png" />
     <None Include="Recursos\km-sub.jpg" />
     <None Include="Recursos\KnittingBasket.jpg" />
     <None Include="Recursos\cotton-merino.jpg" />
@@ -162,6 +212,12 @@
       <DependentUpon>PatronesModel.edmx</DependentUpon>
       <LastGenOutput>PatronesModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Recursos\add.png" />
+    <Content Include="Recursos\cancel.png" />
+    <Content Include="Recursos\config1.png" />
+    <Content Include="Recursos\download.png" />
+    <Content Include="Recursos\exit.png" />
+    <Content Include="Recursos\find.png" />
     <Content Include="Recursos\moda.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PatronesDeDiseño.Modelo
 {
-   public class ModelTiposPunto
+   public static class ModelEntidades
    {
-        public string TipPuntos { get; set; }
+        public static int IndiceBuscaLanas { get; set; }
+        public static List<Lanas> ListaLanas = new List<Lanas>();
    }
 }
