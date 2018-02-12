@@ -1,5 +1,6 @@
 ﻿using PatronesDeDiseño.Modelo;
 using PatronesDeDiseño.Negocio;
+using PatronesDeDiseño.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +44,7 @@ namespace PatronesDeDiseño.Vista.Lanas
         private void btnModificalana_Click(object sender, EventArgs e)
         {
 
-            ControlLanas.ModificarGrosorDelana(ModelEntidades.IndiceBuscaLanas, txtModificaLana.Text);
+            ControlLanas.ModificarGrosorDelana(LanasViewModel.IndiceBuscaLanas, txtModificaLana.Text);
             if (ControlLanas.Result)
             {
                 MessageBox.Show(Consts.lanas + Consts.Inercionok, "Modificacion Correcta", MessageBoxButtons.OK);

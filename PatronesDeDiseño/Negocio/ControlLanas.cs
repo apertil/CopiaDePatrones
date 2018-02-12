@@ -1,6 +1,9 @@
 ﻿using PatronesDeDiseño.Modelo;
+using PatronesDeDiseño.ViewModel;
+using PatronesDeDiseño.Vista.Lanas;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +45,9 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<Lanas> ficherolana;
+        public static List<Lanas> fichero;
+        public static List<string> VistaModeloLanas = new List<string>();
+        public static DataTable ficherolana;
 
 
 
@@ -75,36 +80,51 @@ namespace PatronesDeDiseño.Negocio
 
         }
 
-        public static List<Lanas> ConsultarGrosorLana(string grosorLana)
+        public static DataTable ConsultarGrosorLana(string grosorLana)
         {
             
             try
             {
                 using (contexto contexto = new contexto())
                 {
-                    if (grosorLana == null)
+                    if (grosorLana == string.Empty)
                     {
                         var query_where = (from a in contexto.Lanas
-                                          select a).ToList();
-                        ficherolana = query_where;
+                                          select a).Distinct().ToList();
+                        fichero = query_where;
+
+                        foreach (var item in fichero)
+                        {
+                            string a = item.NombreLana.ToString();
+                            VistaModeloLanas.Add(a);
+
+                        }
                     }
                     else
                     {
+                             
                         var query_where1 = (from a in contexto.Lanas
                                            where a.NombreLana.Contains(grosorLana.Trim())
-                                           select a).ToList();
-                        ficherolana = query_where1;
-                    }
-                    
+                                           select a).Distinct().ToList();
+                        fichero = query_where1;
+                        foreach (var item in fichero)
+                        {
+                            string a = item.NombreLana.ToString();
+                            VistaModeloLanas.Add(a);
 
-                    cResultException = null;
-                    cSuccessful = true;
+                        }
+
+                    }
+                   
+                     ficherolana = LlenarResultado(VistaModeloLanas);
+                     cResultException = null;
+                     cSuccessful = true;
                 }
                
             }
             catch (Exception ex)
             {
-
+                ficherolana = null;
                 cResultException = ex.ToString();
                 cSuccessful = false;
                 
@@ -130,7 +150,7 @@ namespace PatronesDeDiseño.Negocio
                     {
                         if (a.NombreLana != null && a.NombreLana == grosorLana.Trim())
                         {
-                            ModelEntidades.IndiceBuscaLanas = a.IdLana;
+                            LanasViewModel.IndiceBuscaLanas = a.IdLana;
                             cResultException = null;
                             cSuccessful = true;
                         }
@@ -208,7 +228,19 @@ namespace PatronesDeDiseño.Negocio
             }
 
         }
+       private static DataTable LlenarResultado(List<string> list)
+        {
 
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Nombre Lana");
+
+            foreach (string item in list)
+            {
+                dt.Rows.Add(item);
+            }
+            return dt;
+
+        }
 
         #endregion
     }

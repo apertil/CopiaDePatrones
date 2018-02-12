@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtConsultarLana = new System.Windows.Forms.TextBox();
@@ -36,8 +37,10 @@
             this.btnSalirConsultarLana = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridLanas = new System.Windows.Forms.DataGridView();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLanas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -120,7 +123,11 @@
             // 
             // dataGridLanas
             // 
+            this.dataGridLanas.AutoGenerateColumns = false;
+            this.dataGridLanas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridLanas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridLanas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridLanas.DataSource = this.bindingSource1;
             this.dataGridLanas.Location = new System.Drawing.Point(136, 203);
             this.dataGridLanas.Name = "dataGridLanas";
             this.dataGridLanas.Size = new System.Drawing.Size(261, 150);
@@ -146,6 +153,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLanas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +169,6 @@
         private System.Windows.Forms.Button btnSalirConsultarLana;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridLanas;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

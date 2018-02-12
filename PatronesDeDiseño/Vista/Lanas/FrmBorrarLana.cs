@@ -1,5 +1,6 @@
 ﻿using PatronesDeDiseño.Modelo;
 using PatronesDeDiseño.Negocio;
+using PatronesDeDiseño.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,7 @@ namespace PatronesDeDiseño.Vista.Lanas
 
         private void btnBorraLana_Click(object sender, EventArgs e)
         {
-            ControlLanas.EliminarLana(ModelEntidades.IndiceBuscaLanas);
+            ControlLanas.EliminarLana(LanasViewModel.IndiceBuscaLanas);
             if (ControlLanas.Result)
             {
                 btnBorraLana.Enabled = false;

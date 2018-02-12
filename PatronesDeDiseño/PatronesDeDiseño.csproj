@@ -98,6 +98,7 @@
     <Compile Include="TiposDeTejer.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\LanasViewModel.cs" />
     <Compile Include="Vista\AboutBox1.cs">
       <SubType>Form</SubType>
     </Compile>
