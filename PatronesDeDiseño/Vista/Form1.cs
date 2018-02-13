@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PatronesDeDiseño.Vista
 {
-    public partial class FrmPatronMain : Form
+    public  partial class FrmPatronMain : Form
     {
         #region "1.- Variables privadas de la clase"
         
@@ -39,9 +39,10 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void nuevaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            
             FrmInsLana l = new FrmInsLana();
-            l.Show();
-           
+            l.ShowDialog();
+          
         }
 
         /// <summary>
@@ -54,6 +55,7 @@ namespace PatronesDeDiseño.Vista
         {
             FrmConsultaLanas con = new FrmConsultaLanas();
             con.Show();
+            
             //MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
         }
         /// <summary>
@@ -66,6 +68,7 @@ namespace PatronesDeDiseño.Vista
         {
             FrmModificarLanas m = new FrmModificarLanas();
             m.Show();
+            
             //MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
 
         }
@@ -73,7 +76,8 @@ namespace PatronesDeDiseño.Vista
         private void borrarGrosorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmBorrarLana d = new FrmBorrarLana();
-            d.Show();
+            d.ShowDialog();
+            
             //MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
         }
 
@@ -90,6 +94,7 @@ namespace PatronesDeDiseño.Vista
         {
             FrmInsTiposPunto a = new FrmInsTiposPunto();
             a.Show();
+            
         }
 
         /// <summary>
@@ -99,7 +104,9 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void consultarTipoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultaTiposPunto tipo = new FrmConsultaTiposPunto();
+            tipo.Show();
+            
         }
 
         /// <summary>

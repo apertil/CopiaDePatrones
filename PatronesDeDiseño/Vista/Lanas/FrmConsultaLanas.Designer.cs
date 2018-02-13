@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridLanas = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridLanas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -47,7 +48,7 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(52, 24);
+            this.panel1.Location = new System.Drawing.Point(52, 48);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(441, 84);
             this.panel1.TabIndex = 16;
@@ -133,12 +134,23 @@
             this.dataGridLanas.Size = new System.Drawing.Size(261, 150);
             this.dataGridLanas.TabIndex = 22;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(187, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 15);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "Consulta Tipos de lana";
+            // 
             // FrmConsultaLanas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(559, 423);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridLanas);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSalirConsultarLana);
@@ -170,5 +182,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridLanas;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Label label4;
     }
 }

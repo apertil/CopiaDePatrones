@@ -21,12 +21,7 @@ namespace PatronesDeDiseño.Vista.Lanas
         public FrmConsultaLanas()
         {
             InitializeComponent();
-            //contexto contexto = new contexto();
-            //bindingSource1.DataSource = (from a in contexto.Lanas
-            //                             where a.NombreLana.Contains(txtConsultarLana.Text.Trim())
-            //                             select a).ToList();
-            //dataGridLanas.DataSource = bindingSource1;
-            //dataGridLanas.Refresh();
+                     
         }
 
         private void btnSalirConsultarLana_Click(object sender, EventArgs e)

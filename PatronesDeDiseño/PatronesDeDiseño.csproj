@@ -99,6 +99,7 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LanasViewModel.cs" />
+    <Compile Include="ViewModel\TipDeTejerViewModel.cs" />
     <Compile Include="Vista\AboutBox1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +138,12 @@
     <Compile Include="Vista\Lanas\FrmInsLana.Designer.cs">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\TiposPunto\FrmConsultaTiposPunto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmConsultaTiposPunto.Designer.cs">
+      <DependentUpon>FrmConsultaTiposPunto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\TiposPunto\FrmInsTiposPunto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Lanas\FrmInsLana.resx">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TiposPunto\FrmConsultaTiposPunto.resx">
+      <DependentUpon>FrmConsultaTiposPunto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmInsTiposPunto.resx">
       <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>

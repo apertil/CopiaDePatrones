@@ -38,6 +38,8 @@ namespace PatronesDeDiseño.Vista.Lanas
         private void btnsalirlanas_Click(object sender, EventArgs e)
         {
             Close();
+            
+            
         }
     }
 }
