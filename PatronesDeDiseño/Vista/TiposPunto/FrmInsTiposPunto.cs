@@ -28,7 +28,7 @@ namespace PatronesDeDiseño.Vista.TiposPunto
         private void btnInsertTipoPunto_Click(object sender, EventArgs e)
         {
 
-          ControlTipDeTejer.ModificarTiposDeTejer(txtintippunt.Text);
+          ControlTipDeTejer.InsertarTiposDeTejer(txtintippunt.Text.TrimStart().TrimEnd());
             if (ControlTipDeTejer.Result)
             {
                 MessageBox.Show(Consts.Tptejer + Consts.Inercionok, "Insercion correcta", MessageBoxButtons.OK);

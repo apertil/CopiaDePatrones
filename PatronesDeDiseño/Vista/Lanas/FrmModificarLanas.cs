@@ -27,7 +27,7 @@ namespace PatronesDeDiseño.Vista.Lanas
 
         private void btnBuscarLana_Click(object sender, EventArgs e)
         {
-            ControlLanas.BuscarGrosorDelana(txtBuscarLana.Text);
+            ControlLanas.BuscarExactoGrosorDelana(txtBuscarLana.Text);
             if (ControlLanas.Result)
             {
                 btnModificalana.Enabled = true;

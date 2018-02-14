@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PatronesDeDiseño.Negocio
 {
-   public static class ControlTipDeTejer
+   public class ControlTipoDeprendas
    {
         #region "1.- Variables privadas de la clase"
         /// <summary>
@@ -43,24 +43,27 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<TiposDeTejer> fichero;
-        public static List<string> VistaTipoDeTejer = new List<string>();
-        public static DataTable ficheroTipoDeTjer;
+        public static List<Prendas> fichero;
+        public static List<string> VistaModeloPrendas = new List<string>();
+        public static DataTable ficheroPrenda;
+
+
+
         #endregion
 
         #region "3.- Metodos Publicos de la clase
 
-        /// <summary>
-        /// Insertar Tipos de tejido
-        /// </summary>
-        /// <param name="tipodetejer"></param>
-        public static void InsertarTiposDeTejer(string tipodetejer)
+       /// <summary>
+       /// Nueva prenda en base de datos
+       /// </summary>
+       /// <param name="NuevaPrenda"></param>
+        public static void InsertarPrenda(string NuevaPrenda)
         {
             try
             {
-                TiposDeTejer tipdetej = new TiposDeTejer();
-                tipdetej.NombreDeTejer = tipodetejer;
-                PatronEntit.Instancia.TiposDeTejer.Add(tipdetej);
+                Prendas TPrenda = new Prendas();
+                TPrenda.NombrePrendas = NuevaPrenda;
+                PatronEntit.Instancia.Prendas.Add(TPrenda);
                 PatronEntit.Instancia.SaveChanges();
                 cResultException = null;
                 cSuccessful = true;
@@ -74,151 +77,83 @@ namespace PatronesDeDiseño.Negocio
 
 
         }
-
         /// <summary>
-        /// Modificar Tipos de Tejido
+        /// Consulta de los tipos de prenda
         /// </summary>
-        /// <param name="tipodetejer"></param>
-        public static void ModificarTiposDeTejer(int idTipodetejer, string tipodetejer)
-        {
-            var cliente = new TiposDeTejer { IdTiposTejer = idTipodetejer };
-            try
-            {
-                using (contexto contexto = new contexto())
-                {
-                    contexto.TiposDeTejer.Attach(cliente);
-                    cliente.NombreDeTejer = tipodetejer;
-                    contexto.Configuration.ValidateOnSaveEnabled = false;
-                    contexto.SaveChanges();
-                    cResultException = null;
-                    cSuccessful = true;
-                }
-            }
-            catch (Exception ex )
-            {
-                cResultException = ex.ToString();
-                cSuccessful = false;
-            }
-
-        }
-        /// <summary>
-        /// Consulta Los tipos de tejido
-        /// </summary>
-        /// <param name="TipoDetejer"></param>
+        /// <param name="ConsPrenda"></param>
         /// <returns></returns>
-        public static DataTable ConsultarTipoDetejer(string TipoDetejer)
+        public static DataTable ConsultarPrenda(string ConsPrenda)
         {
+
             try
             {
-
                 using (contexto contexto = new contexto())
                 {
-                    if (TipoDetejer == string.Empty)
+                    if (ConsPrenda == string.Empty)
                     {
-                        var query_where = (from a in contexto.TiposDeTejer
+                        var query_where = (from a in contexto.Prendas
                                            select a).Distinct().ToList();
                         fichero = query_where;
 
                         foreach (var item in fichero)
                         {
-                            string a = item.NombreDeTejer.ToString();
-                            VistaTipoDeTejer.Add(a);
+                            string a = item.NombrePrendas.ToString();
+                            VistaModeloPrendas.Add(a);
 
                         }
                     }
                     else
                     {
 
-                        var query_where1 = (from a in contexto.TiposDeTejer
-                                            where a.NombreDeTejer.Contains(TipoDetejer.Trim())
+                        var query_where1 = (from a in contexto.Prendas
+                                            where a.NombrePrendas.Contains(ConsPrenda.Trim())
                                             select a).Distinct().ToList();
                         fichero = query_where1;
                         foreach (var item in fichero)
                         {
-                            string a = item.NombreDeTejer.ToString();
-                            VistaTipoDeTejer.Add(a);
+                            string a = item.NombrePrendas.ToString();
+                            VistaModeloPrendas.Add(a);
 
                         }
 
                     }
 
-                    ficheroTipoDeTjer = LlenarResultado(VistaTipoDeTejer);
-
-
-
+                    ficheroPrenda = LlenarResultado(VistaModeloPrendas);
                     cResultException = null;
                     cSuccessful = true;
                 }
+
             }
             catch (Exception ex)
             {
-                ficheroTipoDeTjer = null;
+                ficheroPrenda = null;
                 cResultException = ex.ToString();
                 cSuccessful = false;
-            }
-            return ficheroTipoDeTjer;
-        }
 
+            }
+
+            return ficheroPrenda;
+        }
         /// <summary>
-        /// Buscar Tipos de Tejidos para Modificar y Borrar
+        /// Busca prendas por aproximacion
         /// </summary>
-        /// <param name="tipoDetejer"></param>
-        public static void BuscarTipoDetejer(string tipoDetejer)
+        /// <param name="ConsPrenda"></param>
+      
+        public static void BuscarPrenda(string ConsPrenda)
         {
             try
             {
-
                 using (contexto contexto = new contexto())
                 {
-                    var query_where1 = from a in contexto.TiposDeTejer
-                                       where a.NombreDeTejer.Contains(tipoDetejer.Trim())
+                    var query_where1 = from a in contexto.Prendas
+                                       where a.NombrePrendas.Contains(ConsPrenda.Trim())
                                        select a;
 
                     foreach (var a in query_where1)
                     {
-                        if (a.NombreDeTejer != null && a.NombreDeTejer.Contains(tipoDetejer.Trim()))
+                        if (a.NombrePrendas != null && a.NombrePrendas.Contains(ConsPrenda.Trim()))
                         {
-                            TipDeTejerViewModel.IdTipoDeTejer = a.IdTiposTejer;
-                            cResultException = null;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
-
-                    }
-                    
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                cResultException = ex.ToString();
-                cSuccessful = false;
-            }
-        }
-
-
-
-        public static void BuscarExactoTipoDetejer(string tipoDetejer)
-        {
-            try
-            {
-
-                using (contexto contexto = new contexto())
-                {
-                    var query_where1 = from a in contexto.TiposDeTejer
-                                       where a.NombreDeTejer.Contains(tipoDetejer.Trim())
-                                       select a;
-
-                    foreach (var a in query_where1)
-                    {
-                        if (a.NombreDeTejer != null && a.NombreDeTejer == tipoDetejer)
-                        {
-                            TipDeTejerViewModel.IdTipoDeTejer = a.IdTiposTejer;
-                            cResultException = null;
+                            PrendasViewModel.IdPren = a.IdPrendas;
                             cSuccessful = true;
                         }
                         else
@@ -230,7 +165,6 @@ namespace PatronesDeDiseño.Negocio
                     }
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -238,25 +172,88 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
             }
         }
+        /// <summary>
+        /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
+        /// </summary>
+        /// <param name="ConsPrenda"></param>
+        public static void BuscarExactoPrenda(string ConsPrenda)
+        {
+            try
+            {
+                using (contexto contexto = new contexto())
+                {
+                    var query_where1 = from a in contexto.Prendas
+                                       where a.NombrePrendas == ConsPrenda.Trim()
+                                       select a;
+
+                    foreach (var a in query_where1)
+                    {
+                        if (a.NombrePrendas != null && a.NombrePrendas == ConsPrenda.Trim())
+                        {
+                            PrendasViewModel.IdPren = a.IdPrendas;
+                            cSuccessful = true;
+                        }
+                        else
+                        {
+                            cResultException = "No se ha encontrado el elemento";
+                            cSuccessful = false;
+                        }
+
+                    }
 
 
-
-
-
+                }
+            }
+            catch (Exception ex)
+            {
+                cResultException = ex.ToString();
+                cSuccessful = false;
+            }
+        
+        }
 
         /// <summary>
-        /// Eliminar Tipos de Tejido
+        /// Modifica el tipo de prenda
         /// </summary>
         /// <param name="idregistro"></param>
-        public static void EliminarTipoDetejer(int idregistro)
+        /// <param name="prendaModificada"></param>
+        public static void ModificarPrenda(int idregistro, string prendaModificada)
         {
             try
             {
-                var cliente = new TiposDeTejer { IdTiposTejer = idregistro };
+                var cliente = new Prendas { IdPrendas = idregistro };
                 using (contexto contexto = new contexto())
                 {
-                    contexto.TiposDeTejer.Attach(cliente);
-                    contexto.TiposDeTejer.Remove(cliente);
+                    contexto.Prendas.Attach(cliente);
+                    cliente.NombrePrendas= prendaModificada;
+                    contexto.Configuration.ValidateOnSaveEnabled = false;
+                    contexto.SaveChanges();
+                    cResultException = null;
+                    cSuccessful = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                cResultException = ex.ToString();
+                cSuccessful = false;
+            }
+        }
+
+        /// <summary>
+        /// Elimina el tipo de lana
+        /// </summary>
+        /// <param name="idregistro"></param>
+        public static void EliminarPrenda(int idregistro)
+        {
+            try
+            {
+                var cliente = new Prendas { IdPrendas = idregistro };
+                using (contexto contexto = new contexto())
+                {
+                    contexto.Prendas.Attach(cliente);
+                    contexto.Prendas.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
@@ -270,23 +267,11 @@ namespace PatronesDeDiseño.Negocio
             }
 
         }
-
-
-        #endregion
-
-
-        #region "4.-Métodos privados de la clase"
-
-        /// <summary>
-        /// Rellena el datatable para rellenar el Datagried
-        /// </summary>
-        /// <param name="list"></param>
-        /// <returns></returns>
         private static DataTable LlenarResultado(List<string> list)
         {
 
             DataTable dt = new DataTable();
-            dt.Columns.Add("Nombre Tipo de Tejido");
+            dt.Columns.Add("Nombre Tipo de Prenda");
 
             foreach (string item in list)
             {
@@ -297,6 +282,5 @@ namespace PatronesDeDiseño.Negocio
         }
 
         #endregion
-
     }
 }

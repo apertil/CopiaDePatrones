@@ -148,6 +148,45 @@ namespace PatronesDeDiseño.Negocio
                     
                     foreach (var a in query_where1)
                     {
+                        if (a.NombreLana != null && a.NombreLana.Contains(grosorLana.Trim()))
+                        {
+                            LanasViewModel.IndiceBuscaLanas = a.IdLana;
+                            cResultException = null;
+                            cSuccessful = true;
+                        }
+                        else
+                        {
+                            cResultException = "No se ha encontrado el elemento";
+                            cSuccessful = false;
+                        }
+
+                    }
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                cResultException = ex.ToString();
+                cSuccessful = false;
+            }
+        }
+        /// <summary>
+        /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
+        /// </summary>
+        /// <param name="grosorLana"></param>
+        public static void BuscarExactoGrosorDelana(string grosorLana)
+        {
+            try
+            {
+                using (contexto contexto = new contexto())
+                {
+                    var query_where1 = from a in contexto.Lanas
+                                       where a.NombreLana == grosorLana.Trim()
+                                       select a;
+
+                    foreach (var a in query_where1)
+                    {
                         if (a.NombreLana != null && a.NombreLana == grosorLana.Trim())
                         {
                             LanasViewModel.IndiceBuscaLanas = a.IdLana;
@@ -172,7 +211,13 @@ namespace PatronesDeDiseño.Negocio
             }
         }
 
-       
+
+
+
+
+
+
+
         /// <summary>
         /// Modifica el tipo de lana
         /// </summary>
@@ -243,5 +288,5 @@ namespace PatronesDeDiseño.Negocio
         }
 
         #endregion
-    }
+   }
 }

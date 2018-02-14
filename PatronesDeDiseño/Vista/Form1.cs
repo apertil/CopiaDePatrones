@@ -1,4 +1,5 @@
 ﻿using PatronesDeDiseño.Vista.Lanas;
+using PatronesDeDiseño.Vista.Prendas;
 using PatronesDeDiseño.Vista.TiposPunto;
 using System;
 using System.Collections.Generic;
@@ -116,7 +117,9 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void buscarTipoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarTiposPunto modi = new FrmModificarTiposPunto();
+            modi.Show();
+           
         }
         /// <summary>
         /// Borrar tipos de punto
@@ -140,7 +143,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void nuevaPrendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsTipoPrendas NuevaPrenda = new FrmInsTipoPrendas();
+            NuevaPrenda.Show();
         }
         /// <summary>
         /// Consultar prenda
@@ -149,7 +153,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void buscarPrendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultaPrendas CPren = new FrmConsultaPrendas();
+            CPren.Show();
         }
 
         /// <summary>

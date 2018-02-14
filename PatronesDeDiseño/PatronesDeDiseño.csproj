@@ -64,9 +64,9 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Consts.cs" />
-    <Compile Include="Modelo\ModelEntidades.cs" />
     <Compile Include="Negocio\ControlLanas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
+    <Compile Include="Negocio\ControlTipoDeprendas.cs" />
     <Compile Include="Negocio\PatronEntit.cs" />
     <Compile Include="Patrones.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
@@ -99,6 +99,7 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\LanasViewModel.cs" />
+    <Compile Include="ViewModel\PrendasViewModel.cs" />
     <Compile Include="ViewModel\TipDeTejerViewModel.cs" />
     <Compile Include="Vista\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -138,6 +139,24 @@
     <Compile Include="Vista\Lanas\FrmInsLana.Designer.cs">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Prendas\FrmConsultaPrendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmConsultaPrendas.Designer.cs">
+      <DependentUpon>FrmConsultaPrendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmInsTipoPrendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmInsTipoPrendas.Designer.cs">
+      <DependentUpon>FrmInsTipoPrendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.Designer.cs">
+      <DependentUpon>FrmBorrarTipoDeTejer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\TiposPunto\FrmConsultaTiposPunto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +168,12 @@
     </Compile>
     <Compile Include="Vista\TiposPunto\FrmInsTiposPunto.Designer.cs">
       <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmModificarTiposPunto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\TiposPunto\FrmModificarTiposPunto.Designer.cs">
+      <DependentUpon>FrmModificarTiposPunto.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Vista\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
@@ -178,11 +203,23 @@
     <EmbeddedResource Include="Vista\Lanas\FrmInsLana.resx">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Prendas\FrmConsultaPrendas.resx">
+      <DependentUpon>FrmConsultaPrendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Prendas\FrmInsTipoPrendas.resx">
+      <DependentUpon>FrmInsTipoPrendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.resx">
+      <DependentUpon>FrmBorrarTipoDeTejer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmConsultaTiposPunto.resx">
       <DependentUpon>FrmConsultaTiposPunto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmInsTiposPunto.resx">
       <DependentUpon>FrmInsTiposPunto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\TiposPunto\FrmModificarTiposPunto.resx">
+      <DependentUpon>FrmModificarTiposPunto.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="PatronesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

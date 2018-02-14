@@ -27,7 +27,7 @@ namespace PatronesDeDiseño.Vista.Lanas
 
         private void btnBuscarBorrarLana_Click(object sender, EventArgs e)
         {
-            ControlLanas.BuscarGrosorDelana(txtBorrarLana.Text);
+            ControlLanas.BuscarExactoGrosorDelana(txtBorrarLana.Text);
             if (ControlLanas.Result)
             {
                 btnBorraLana.Enabled = true;
