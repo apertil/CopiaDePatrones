@@ -32,7 +32,30 @@ namespace PatronesDeDiseño.Vista
         }
         #endregion
 
-        #region "4.- Metodos de lanas"
+        #region "4.-Métodos de patrones"
+        private void nuevoPatrónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+        }
+
+        private void consultarPatronToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+        }
+
+        private void modificarPatrónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+        }
+
+        private void busquedaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+        }
+
+        #endregion  
+
+        #region "5.- Metodos de lanas"
         /// <summary>
         /// Insertar Grosor de lana
         /// </summary>
@@ -84,7 +107,7 @@ namespace PatronesDeDiseño.Vista
 
         #endregion
 
-        #region "5.- Metodos de tipos de punto"
+        #region "6.- Metodos de tipos de punto"
 
         /// <summary>
         /// Insertar tipos de punto
@@ -134,7 +157,7 @@ namespace PatronesDeDiseño.Vista
 
         #endregion
 
-        #region "6.- Metodos de prendas"
+        #region "7.- Metodos de prendas"
 
         /// <summary>
         /// Nueva prenda
@@ -165,7 +188,8 @@ namespace PatronesDeDiseño.Vista
 
         private void modificarPrendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarPrendas modpr = new FrmModificarPrendas();
+            modpr.Show();
         }
 
         /// <summary>
@@ -175,12 +199,13 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void borrarPrendaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmBorrarPrenda borprenda = new FrmBorrarPrenda();
+            borprenda.Show();
         }
 
         #endregion
 
-        #region "7.- Metodos de Caracteristicas"
+        #region "8.- Metodos de Caracteristicas"
 
         /// <summary>
         /// Nueva Caracteristica
@@ -223,7 +248,7 @@ namespace PatronesDeDiseño.Vista
         }
         #endregion
 
-        #region "8.- Metodos de revistas"
+        #region "9.- Metodos de revistas"
 
         /// <summary>
         /// Nueva Revista
@@ -267,7 +292,7 @@ namespace PatronesDeDiseño.Vista
         }
         #endregion
 
-        #region "9.- Metodos de Autores de patrones"
+        #region "10.- Metodos de Autores de patrones"
 
         /// <summary>
         /// Nuevo autor de revista
@@ -314,7 +339,7 @@ namespace PatronesDeDiseño.Vista
 
         #endregion
 
-        #region "10.- Metodos de Genero Edad"
+        #region "11.- Metodos de Genero Edad"
 
         /// <summary>
         /// Nuevo género edad
@@ -375,6 +400,6 @@ namespace PatronesDeDiseño.Vista
             abo.Show();
         }
 
-       
+     
     }
 }

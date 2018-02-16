@@ -64,6 +64,7 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Consts.cs" />
+    <Compile Include="Negocio\ControlCaracteristicas.cs" />
     <Compile Include="Negocio\ControlLanas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
     <Compile Include="Negocio\ControlTipoDeprendas.cs" />
@@ -100,6 +101,7 @@
     </Compile>
     <Compile Include="ViewModel\LanasViewModel.cs" />
     <Compile Include="ViewModel\PrendasViewModel.cs" />
+    <Compile Include="ViewModel\TCaractViewModel.cs" />
     <Compile Include="ViewModel\TipDeTejerViewModel.cs" />
     <Compile Include="Vista\AboutBox1.cs">
       <SubType>Form</SubType>
@@ -139,6 +141,12 @@
     <Compile Include="Vista\Lanas\FrmInsLana.Designer.cs">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Prendas\FrmBorrarPrenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmBorrarPrenda.Designer.cs">
+      <DependentUpon>FrmBorrarPrenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Prendas\FrmConsultaPrendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +158,12 @@
     </Compile>
     <Compile Include="Vista\Prendas\FrmInsTipoPrendas.Designer.cs">
       <DependentUpon>FrmInsTipoPrendas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmModificarPrendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Prendas\FrmModificarPrendas.Designer.cs">
+      <DependentUpon>FrmModificarPrendas.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.cs">
       <SubType>Form</SubType>
@@ -203,11 +217,17 @@
     <EmbeddedResource Include="Vista\Lanas\FrmInsLana.resx">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Prendas\FrmBorrarPrenda.resx">
+      <DependentUpon>FrmBorrarPrenda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\Prendas\FrmConsultaPrendas.resx">
       <DependentUpon>FrmConsultaPrendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Prendas\FrmInsTipoPrendas.resx">
       <DependentUpon>FrmInsTipoPrendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Prendas\FrmModificarPrendas.resx">
+      <DependentUpon>FrmModificarPrendas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.resx">
       <DependentUpon>FrmBorrarTipoDeTejer.cs</DependentUpon>

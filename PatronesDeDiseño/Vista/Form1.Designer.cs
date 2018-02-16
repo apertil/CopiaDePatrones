@@ -115,24 +115,28 @@
             this.nuevoPatrónToolStripMenuItem.Name = "nuevoPatrónToolStripMenuItem";
             this.nuevoPatrónToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.nuevoPatrónToolStripMenuItem.Text = "Nuevo Patrón";
+            this.nuevoPatrónToolStripMenuItem.Click += new System.EventHandler(this.nuevoPatrónToolStripMenuItem_Click);
             // 
             // consultarPatronToolStripMenuItem
             // 
             this.consultarPatronToolStripMenuItem.Name = "consultarPatronToolStripMenuItem";
             this.consultarPatronToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.consultarPatronToolStripMenuItem.Text = "Consultar Patron";
+            this.consultarPatronToolStripMenuItem.Click += new System.EventHandler(this.consultarPatronToolStripMenuItem_Click);
             // 
             // modificarPatrónToolStripMenuItem
             // 
             this.modificarPatrónToolStripMenuItem.Name = "modificarPatrónToolStripMenuItem";
             this.modificarPatrónToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.modificarPatrónToolStripMenuItem.Text = "Modificar Patrón";
+            this.modificarPatrónToolStripMenuItem.Click += new System.EventHandler(this.modificarPatrónToolStripMenuItem_Click);
             // 
             // busquedaToolStripMenuItem
             // 
             this.busquedaToolStripMenuItem.Name = "busquedaToolStripMenuItem";
             this.busquedaToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.busquedaToolStripMenuItem.Text = "Borrar Patrón";
+            this.busquedaToolStripMenuItem.Click += new System.EventHandler(this.busquedaToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -156,7 +160,6 @@
             this.lanasToolStripMenuItem.Name = "lanasToolStripMenuItem";
             this.lanasToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.lanasToolStripMenuItem.Text = "Lanas";
-           
             // 
             // nuevaToolStripMenuItem
             // 

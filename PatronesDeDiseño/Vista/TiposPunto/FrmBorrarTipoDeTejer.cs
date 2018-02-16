@@ -22,14 +22,14 @@ namespace PatronesDeDiseño.Vista.TiposPunto
 
         private void btnBuscarBorrarTipo_Click(object sender, EventArgs e)
         {
-            ControlTipDeTejer.BuscarExactoTipoDetejer(txtBorrarTipoTejido.Text.Trim());
+            ControlTipDeTejer.BuscarExactoTipoDetejer(txtBorrarTipoTejido.Text.TrimStart().TrimEnd());
             if (ControlTipDeTejer.Result)
             {
                 btnBorraTipo.Enabled = true;
             }
             else
             {
-                MessageBox.Show(Consts.Tptejer + Consts.ErrorTipoPunto, "No se ha encontrado", MessageBoxButtons.OK);
+                MessageBox.Show(txtBorrarTipoTejido.Text + Consts.ErrorTipoPunto, "No se ha encontrado", MessageBoxButtons.OK);
             }
 
         }
@@ -40,13 +40,18 @@ namespace PatronesDeDiseño.Vista.TiposPunto
             if (ControlTipDeTejer.Result)
             {
                 btnBorraTipo.Enabled = false;
-                MessageBox.Show(Consts.Tptejer + Consts.BorradoTptejer, "Borrado Correcto", MessageBoxButtons.OK);
+                MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoTptejer, "Borrado Correcto", MessageBoxButtons.OK);
             }
             else
             {
                 btnBorraTipo.Enabled = false;
-                MessageBox.Show(Consts.Tptejer + Consts.BorradoErrorTptejer, "Borrado No Correcto", MessageBoxButtons.OK);
+                MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoErrorTptejer, "Borrado No Correcto", MessageBoxButtons.OK);
             }
+        }
+
+        private void btnSalirBorrarrTipo_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

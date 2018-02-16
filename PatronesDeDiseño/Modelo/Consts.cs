@@ -15,7 +15,9 @@ namespace PatronesDeDiseño.Modelo
 
         public const string ErrorGrosorLana = " No se ha encontrado el Grosor de lana especificado";
 
-        public const string ErrorCaracteristica = " No se ha encontrado la Carcteristica especificada";
+        public const string ErrorCaracteristica = " No se ha encontrado la Característica especificada";
+
+        public const string ErrorTipoPrenda = " No se ha encontrado la Prenda especificada";
 
         public const string BorraLanaOk = " La lana especificada se ha borrado de la base de datos";
 
@@ -44,6 +46,10 @@ namespace PatronesDeDiseño.Modelo
         public const string ModificaErrorPrenda = " No se ha Modificado correctamente el Tipo de Prenda ";
 
         public const string EncontradaErrorPrenda = " No se ha encontrado el Tipo de Prenda ";
+
+        public const string BorradoErrorPrenda = " No se ha borrado el Tipo de Prenda ";
+
+        public const string BorradoPrenda = " Se ha borrado correctamente el Tipo de Prenda ";
 
 
 

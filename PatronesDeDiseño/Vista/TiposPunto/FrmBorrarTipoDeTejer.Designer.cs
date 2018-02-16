@@ -35,7 +35,7 @@
             this.txtBorrarTipoTejido = new System.Windows.Forms.TextBox();
             this.btnBuscarBorrarTipo = new System.Windows.Forms.Button();
             this.btnBorraTipo = new System.Windows.Forms.Button();
-            this.btnSalirBorrarrLana = new System.Windows.Forms.Button();
+            this.btnSalirBorrarrTipo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,18 +119,19 @@
             this.btnBorraTipo.UseVisualStyleBackColor = true;
             this.btnBorraTipo.Click += new System.EventHandler(this.btnBorraTipo_Click);
             // 
-            // btnSalirBorrarrLana
+            // btnSalirBorrarrTipo
             // 
-            this.btnSalirBorrarrLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalirBorrarrLana.Image = global::PatronesDeDiseño.Properties.Resources.exit;
-            this.btnSalirBorrarrLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirBorrarrLana.Location = new System.Drawing.Point(325, 224);
-            this.btnSalirBorrarrLana.Name = "btnSalirBorrarrLana";
-            this.btnSalirBorrarrLana.Size = new System.Drawing.Size(88, 42);
-            this.btnSalirBorrarrLana.TabIndex = 23;
-            this.btnSalirBorrarrLana.Text = "Salir";
-            this.btnSalirBorrarrLana.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalirBorrarrLana.UseVisualStyleBackColor = true;
+            this.btnSalirBorrarrTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalirBorrarrTipo.Image = global::PatronesDeDiseño.Properties.Resources.exit;
+            this.btnSalirBorrarrTipo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalirBorrarrTipo.Location = new System.Drawing.Point(325, 224);
+            this.btnSalirBorrarrTipo.Name = "btnSalirBorrarrTipo";
+            this.btnSalirBorrarrTipo.Size = new System.Drawing.Size(88, 42);
+            this.btnSalirBorrarrTipo.TabIndex = 23;
+            this.btnSalirBorrarrTipo.Text = "Salir";
+            this.btnSalirBorrarrTipo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalirBorrarrTipo.UseVisualStyleBackColor = true;
+            this.btnSalirBorrarrTipo.Click += new System.EventHandler(this.btnSalirBorrarrTipo_Click);
             // 
             // FrmBorrarTipoDeTejer
             // 
@@ -138,7 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.ClientSize = new System.Drawing.Size(538, 295);
-            this.Controls.Add(this.btnSalirBorrarrLana);
+            this.Controls.Add(this.btnSalirBorrarrTipo);
             this.Controls.Add(this.btnBorraTipo);
             this.Controls.Add(this.btnBuscarBorrarTipo);
             this.Controls.Add(this.txtBorrarTipoTejido);
@@ -165,6 +166,6 @@
         private System.Windows.Forms.TextBox txtBorrarTipoTejido;
         private System.Windows.Forms.Button btnBuscarBorrarTipo;
         private System.Windows.Forms.Button btnBorraTipo;
-        private System.Windows.Forms.Button btnSalirBorrarrLana;
+        private System.Windows.Forms.Button btnSalirBorrarrTipo;
     }
 }
