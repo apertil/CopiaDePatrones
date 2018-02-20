@@ -1,5 +1,6 @@
 ﻿using PatronesDeDiseño.Vista.Lanas;
 using PatronesDeDiseño.Vista.Prendas;
+using PatronesDeDiseño.Vista.Revistas;
 using PatronesDeDiseño.Vista.TiposPunto;
 using System;
 using System.Collections.Generic;
@@ -258,7 +259,8 @@ namespace PatronesDeDiseño.Vista
 
         private void nuevaRevistaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsertarRevista insRevista = new FrmInsertarRevista();
+            insRevista.Show();
         }
 
         /// <summary>
@@ -268,7 +270,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void buscarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultarRevista cnrevis = new FrmConsultarRevista();
+            cnrevis.Show();
         }
 
         /// <summary>

@@ -28,9 +28,9 @@ namespace PatronesDeDiseño
         public virtual AutorPatron AutorPatron { get; set; }
         public virtual Lanas Lanas { get; set; }
         public virtual Prendas Prendas { get; set; }
-        public virtual Revistas Revistas { get; set; }
         public virtual TiposCaracteristicas TiposCaracteristicas { get; set; }
         public virtual TiposDeTejer TiposDeTejer { get; set; }
         public virtual GeneroEdad GeneroEdad { get; set; }
+        public virtual Revistas Revistas { get; set; }
     }
 }

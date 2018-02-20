@@ -31,23 +31,18 @@ namespace PatronesDeDiseño.Vista.Lanas
 
         private void btnConsultarLana_Click(object sender, EventArgs e)
         {
-           
-            try
+      
+           DataTable table = ControlLanas.ConsultarGrosorLana(txtConsultarLana.Text);
+            if (ControlLanas.Result)
             {
-
-                DataTable table = ControlLanas.ConsultarGrosorLana(txtConsultarLana.Text);
                 dataGridLanas.AutoGenerateColumns = true;
                 dataGridLanas.DataSource = table;
-
             }
-            catch (Exception )
+            else
             {
-
-               
-
+                    MessageBox.Show(ControlLanas.ResultException, "Error en la busqueda", MessageBoxButtons.OK);
             }
-
-            
+           
         }
     }
 }

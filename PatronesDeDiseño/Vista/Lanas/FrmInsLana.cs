@@ -24,12 +24,12 @@ namespace PatronesDeDiseño.Vista.Lanas
             ControlLanas.InsertarGrosorDelana(txtGrosorLana.Text);
             if (ControlLanas.Result)
             {
-                MessageBox.Show(Consts.lanas + Consts.Inercionok, "Insercion correcta", MessageBoxButtons.OK);
+                MessageBox.Show(txtGrosorLana.Text + Consts.Inercionok, "Insercion correcta", MessageBoxButtons.OK);
                 txtGrosorLana.Text = null;
             }
             else
             {
-                MessageBox.Show(Consts.lanas + Consts.InercionNoOk, "Insercion Incorrecta", MessageBoxButtons.OK);
+                MessageBox.Show(txtGrosorLana.Text + Consts.InercionNoOk, "Insercion Incorrecta", MessageBoxButtons.OK);
                 MessageBox.Show(ControlLanas.ResultException, "Insercion Incorrecta", MessageBoxButtons.OK);
             }
            

@@ -85,19 +85,21 @@ namespace PatronesDeDiseño.Negocio
             
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     if (grosorLana == string.Empty)
                     {
                         var query_where = (from a in contexto.Lanas
                                           select a).Distinct().ToList();
                         fichero = query_where;
+                        if (fichero.Count > 0)
+                        { 
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombreLana.ToString();
+                                VistaModeloLanas.Add(a);
 
-                        foreach (var item in fichero)
-                        {
-                            string a = item.NombreLana.ToString();
-                            VistaModeloLanas.Add(a);
-
+                            }
                         }
                     }
                     else
@@ -107,18 +109,29 @@ namespace PatronesDeDiseño.Negocio
                                            where a.NombreLana.Contains(grosorLana.Trim())
                                            select a).Distinct().ToList();
                         fichero = query_where1;
-                        foreach (var item in fichero)
+                        if (fichero.Count > 0)
                         {
-                            string a = item.NombreLana.ToString();
-                            VistaModeloLanas.Add(a);
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombreLana.ToString();
+                                VistaModeloLanas.Add(a);
 
+                            }
                         }
-
                     }
-                   
-                     ficherolana = LlenarResultado(VistaModeloLanas);
-                     cResultException = null;
-                     cSuccessful = true;
+
+                     if (VistaModeloLanas.Count > 0)
+                     {
+                        ficherolana = LlenarResultado(VistaModeloLanas);
+                        cResultException = null;
+                        cSuccessful = true;
+                     }
+                     else
+                     {
+                        cResultException = "No se ha encontrado el elemento";
+                        cSuccessful = false;
+                     }
+                     
                 }
                
             }
@@ -129,7 +142,8 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
                 
             }
-
+            VistaModeloLanas.Clear();
+            fichero.Clear();
             return ficherolana;
         }
         /// <summary>
@@ -140,7 +154,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 { 
                   var query_where1 = from a in contexto.Lanas
                                        where a.NombreLana.Contains(grosorLana.Trim())
@@ -179,7 +193,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.Lanas
                                        where a.NombreLana == grosorLana.Trim()
@@ -228,7 +242,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Lanas { IdLana = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.Lanas.Attach(cliente);
                     cliente.NombreLana = grosorModificado;
@@ -256,7 +270,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Lanas { IdLana = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.Lanas.Attach(cliente);
                     contexto.Lanas.Remove(cliente);

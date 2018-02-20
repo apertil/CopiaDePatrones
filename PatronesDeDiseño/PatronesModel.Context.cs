@@ -13,9 +13,9 @@ namespace PatronesDeDiseño
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class contexto : DbContext
+    public partial class PatronesEntities : DbContext
     {
-        public contexto()
+        public PatronesEntities()
             : base("name=PatronesEntities")
         {
         }
@@ -29,9 +29,9 @@ namespace PatronesDeDiseño
         public virtual DbSet<Lanas> Lanas { get; set; }
         public virtual DbSet<Patrones> Patrones { get; set; }
         public virtual DbSet<Prendas> Prendas { get; set; }
-        public virtual DbSet<Revistas> Revistas { get; set; }
         public virtual DbSet<TiposCaracteristicas> TiposCaracteristicas { get; set; }
         public virtual DbSet<TiposDeTejer> TiposDeTejer { get; set; }
         public virtual DbSet<GeneroEdad> GeneroEdad { get; set; }
+        public virtual DbSet<Revistas> Revistas { get; set; }
     }
 }

@@ -26,8 +26,15 @@ namespace PatronesDeDiseño.Vista.Prendas
         private void btnBuscarTipoPunto_Click(object sender, EventArgs e)
         {
             DataTable table = ControlTipoDeprendas.ConsultarPrenda(txtConsTipPrenda.Text.Trim());
-            dataGridConsultaTipoPrenda.AutoGenerateColumns = true;
-            dataGridConsultaTipoPrenda.DataSource = table;
+            if (ControlTipoDeprendas.Result)
+            {
+                dataGridConsultaTipoPrenda.AutoGenerateColumns = true;
+                dataGridConsultaTipoPrenda.DataSource = table;
+            }
+            else
+            {
+                MessageBox.Show(ControlTipoDeprendas.ResultException, "Error en la busqueda", MessageBoxButtons.OK);
+            }
         }
     }
 }

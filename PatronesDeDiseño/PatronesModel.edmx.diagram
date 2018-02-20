@@ -9,17 +9,17 @@
         <EntityTypeShape EntityType="ModelosPuntoModel.Lanas" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelosPuntoModel.Patrones" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelosPuntoModel.Prendas" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModelosPuntoModel.Revistas" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelosPuntoModel.TiposCaracteristicas" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ModelosPuntoModel.TiposDeTejer" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_AutorPatron" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Lanas" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Prendas" ManuallyRouted="false" />
-        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Revistas" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposCaracteristicas" ManuallyRouted="false" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_TiposDeTejer" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ModelosPuntoModel.GeneroEdad" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_GeneroEdad" />
+        <EntityTypeShape EntityType="ModelosPuntoModel.Revistas" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="ModelosPuntoModel.FK_Patrones_Revistas" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

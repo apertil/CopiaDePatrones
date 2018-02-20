@@ -66,6 +66,7 @@
     <Compile Include="Modelo\Consts.cs" />
     <Compile Include="Negocio\ControlCaracteristicas.cs" />
     <Compile Include="Negocio\ControlLanas.cs" />
+    <Compile Include="Negocio\ControlRevistas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
     <Compile Include="Negocio\ControlTipoDeprendas.cs" />
     <Compile Include="Negocio\PatronEntit.cs" />
@@ -101,6 +102,7 @@
     </Compile>
     <Compile Include="ViewModel\LanasViewModel.cs" />
     <Compile Include="ViewModel\PrendasViewModel.cs" />
+    <Compile Include="ViewModel\RevistasViewModel.cs" />
     <Compile Include="ViewModel\TCaractViewModel.cs" />
     <Compile Include="ViewModel\TipDeTejerViewModel.cs" />
     <Compile Include="Vista\AboutBox1.cs">
@@ -165,6 +167,18 @@
     <Compile Include="Vista\Prendas\FrmModificarPrendas.Designer.cs">
       <DependentUpon>FrmModificarPrendas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Revistas\FrmConsultarRevista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmConsultarRevista.Designer.cs">
+      <DependentUpon>FrmConsultarRevista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmInsertarRevista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmInsertarRevista.Designer.cs">
+      <DependentUpon>FrmInsertarRevista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +242,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Prendas\FrmModificarPrendas.resx">
       <DependentUpon>FrmModificarPrendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Revistas\FrmConsultarRevista.resx">
+      <DependentUpon>FrmConsultarRevista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Revistas\FrmInsertarRevista.resx">
+      <DependentUpon>FrmInsertarRevista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.resx">
       <DependentUpon>FrmBorrarTipoDeTejer.cs</DependentUpon>

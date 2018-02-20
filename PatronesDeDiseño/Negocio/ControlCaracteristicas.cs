@@ -85,7 +85,7 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     if (ConsCaract == string.Empty)
                     {
@@ -141,7 +141,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.TiposCaracteristicas
                                        where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
@@ -178,7 +178,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.TiposCaracteristicas
                                        where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
@@ -220,7 +220,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new TiposCaracteristicas { IdTiposCaract = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.TiposCaracteristicas.Attach(cliente);
                     cliente.NombreCaracteristicas = CaractModificada;
@@ -248,7 +248,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new TiposCaracteristicas { IdTiposCaract = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.TiposCaracteristicas.Attach(cliente);
                     contexto.TiposCaracteristicas.Remove(cliente);

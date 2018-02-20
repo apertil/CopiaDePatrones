@@ -52,9 +52,9 @@
           <Key>
             <PropertyRef Name="IdRevistas" />
           </Key>
-          <Property Name="IdRevistas" Type="int" Nullable="false" />
+          <Property Name="IdRevistas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreRevista" Type="nvarchar" MaxLength="50" />
-          <Property Name="FechaRevista" Type="date" />
+          <Property Name="Autor" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TiposCaracteristicas">
           <Key>
@@ -228,11 +228,11 @@
           <NavigationProperty Name="AutorPatron" Relationship="Self.FK_Patrones_AutorPatron" FromRole="Patrones" ToRole="AutorPatron" />
           <NavigationProperty Name="Lanas" Relationship="Self.FK_Patrones_Lanas" FromRole="Patrones" ToRole="Lanas" />
           <NavigationProperty Name="Prendas" Relationship="Self.FK_Patrones_Prendas" FromRole="Patrones" ToRole="Prendas" />
-          <NavigationProperty Name="Revistas" Relationship="Self.FK_Patrones_Revistas" FromRole="Patrones" ToRole="Revistas" />
           <NavigationProperty Name="TiposCaracteristicas" Relationship="Self.FK_Patrones_TiposCaracteristicas" FromRole="Patrones" ToRole="TiposCaracteristicas" />
           <NavigationProperty Name="TiposDeTejer" Relationship="Self.FK_Patrones_TiposDeTejer" FromRole="Patrones" ToRole="TiposDeTejer" />
           <Property Name="IdGenEdad" Type="Int32" />
           <NavigationProperty Name="GeneroEdad" Relationship="ModelosPuntoModel.FK_Patrones_GeneroEdad" FromRole="Patrones" ToRole="GeneroEdad" />
+          <NavigationProperty Name="Revistas" Relationship="ModelosPuntoModel.FK_Patrones_Revistas" FromRole="Patrones" ToRole="Revistas" />
         </EntityType>
         <EntityType Name="Prendas">
           <Key>
@@ -241,15 +241,6 @@
           <Property Name="IdPrendas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombrePrendas" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_Prendas" FromRole="Prendas" ToRole="Patrones" />
-        </EntityType>
-        <EntityType Name="Revistas">
-          <Key>
-            <PropertyRef Name="IdRevistas" />
-          </Key>
-          <Property Name="IdRevistas" Type="Int32" Nullable="false" />
-          <Property Name="NombreRevista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FechaRevista" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Patrones" Relationship="Self.FK_Patrones_Revistas" FromRole="Revistas" ToRole="Patrones" />
         </EntityType>
         <EntityType Name="TiposCaracteristicas">
           <Key>
@@ -303,18 +294,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Patrones_Revistas">
-          <End Role="Revistas" Type="Self.Revistas" Multiplicity="0..1" />
-          <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Revistas">
-              <PropertyRef Name="IdRevistas" />
-            </Principal>
-            <Dependent Role="Patrones">
-              <PropertyRef Name="IdRevistas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Patrones_TiposCaracteristicas">
           <End Role="TiposCaracteristicas" Type="Self.TiposCaracteristicas" Multiplicity="0..1" />
           <End Role="Patrones" Type="Self.Patrones" Multiplicity="*" />
@@ -344,7 +323,6 @@
           <EntitySet Name="Lanas" EntityType="Self.Lanas" />
           <EntitySet Name="Patrones" EntityType="Self.Patrones" />
           <EntitySet Name="Prendas" EntityType="Self.Prendas" />
-          <EntitySet Name="Revistas" EntityType="Self.Revistas" />
           <EntitySet Name="TiposCaracteristicas" EntityType="Self.TiposCaracteristicas" />
           <EntitySet Name="TiposDeTejer" EntityType="Self.TiposDeTejer" />
           <AssociationSet Name="FK_Patrones_AutorPatron" Association="Self.FK_Patrones_AutorPatron">
@@ -359,10 +337,6 @@
             <End Role="Prendas" EntitySet="Prendas" />
             <End Role="Patrones" EntitySet="Patrones" />
           </AssociationSet>
-          <AssociationSet Name="FK_Patrones_Revistas" Association="Self.FK_Patrones_Revistas">
-            <End Role="Revistas" EntitySet="Revistas" />
-            <End Role="Patrones" EntitySet="Patrones" />
-          </AssociationSet>
           <AssociationSet Name="FK_Patrones_TiposCaracteristicas" Association="Self.FK_Patrones_TiposCaracteristicas">
             <End Role="TiposCaracteristicas" EntitySet="TiposCaracteristicas" />
             <End Role="Patrones" EntitySet="Patrones" />
@@ -374,6 +348,11 @@
           <EntitySet Name="GeneroEdad" EntityType="ModelosPuntoModel.GeneroEdad" />
           <AssociationSet Name="FK_Patrones_GeneroEdad" Association="ModelosPuntoModel.FK_Patrones_GeneroEdad">
             <End Role="GeneroEdad" EntitySet="GeneroEdad" />
+            <End Role="Patrones" EntitySet="Patrones" />
+          </AssociationSet>
+          <EntitySet Name="Revistas" EntityType="ModelosPuntoModel.Revistas" />
+          <AssociationSet Name="FK_Patrones_Revistas" Association="ModelosPuntoModel.FK_Patrones_Revistas">
+            <End Role="Revistas" EntitySet="Revistas" />
             <End Role="Patrones" EntitySet="Patrones" />
           </AssociationSet>
         </EntityContainer>
@@ -394,6 +373,27 @@
             </Principal>
             <Dependent Role="Patrones">
               <PropertyRef Name="IdGenEdad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Revistas">
+          <Key>
+            <PropertyRef Name="IdRevistas" />
+          </Key>
+          <Property Name="IdRevistas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRevista" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Autor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patrones" Relationship="ModelosPuntoModel.FK_Patrones_Revistas" FromRole="Revistas" ToRole="Patrones" />
+        </EntityType>
+        <Association Name="FK_Patrones_Revistas">
+          <End Type="ModelosPuntoModel.Revistas" Role="Revistas" Multiplicity="0..1" />
+          <End Type="ModelosPuntoModel.Patrones" Role="Patrones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Revistas">
+              <PropertyRef Name="IdRevistas" />
+            </Principal>
+            <Dependent Role="Patrones">
+              <PropertyRef Name="IdRevistas" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -443,15 +443,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Revistas">
-            <EntityTypeMapping TypeName="ModelosPuntoModel.Revistas">
-              <MappingFragment StoreEntitySet="Revistas">
-                <ScalarProperty Name="IdRevistas" ColumnName="IdRevistas" />
-                <ScalarProperty Name="NombreRevista" ColumnName="NombreRevista" />
-                <ScalarProperty Name="FechaRevista" ColumnName="FechaRevista" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TiposCaracteristicas">
             <EntityTypeMapping TypeName="ModelosPuntoModel.TiposCaracteristicas">
               <MappingFragment StoreEntitySet="TiposCaracteristicas">
@@ -473,6 +464,15 @@
               <MappingFragment StoreEntitySet="GeneroEdad">
                 <ScalarProperty Name="GenEdad" ColumnName="GenEdad" />
                 <ScalarProperty Name="IdGenEd" ColumnName="IdGenEd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revistas">
+            <EntityTypeMapping TypeName="ModelosPuntoModel.Revistas">
+              <MappingFragment StoreEntitySet="Revistas">
+                <ScalarProperty Name="Autor" ColumnName="Autor" />
+                <ScalarProperty Name="NombreRevista" ColumnName="NombreRevista" />
+                <ScalarProperty Name="IdRevistas" ColumnName="IdRevistas" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

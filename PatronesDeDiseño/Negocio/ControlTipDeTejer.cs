@@ -84,7 +84,7 @@ namespace PatronesDeDiseño.Negocio
             var cliente = new TiposDeTejer { IdTiposTejer = idTipodetejer };
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.TiposDeTejer.Attach(cliente);
                     cliente.NombreDeTejer = tipodetejer;
@@ -111,19 +111,21 @@ namespace PatronesDeDiseño.Negocio
             try
             {
 
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     if (TipoDetejer == string.Empty)
                     {
                         var query_where = (from a in contexto.TiposDeTejer
                                            select a).Distinct().ToList();
                         fichero = query_where;
+                        if (fichero.Count > 0)
+                        { 
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombreDeTejer.ToString();
+                                VistaTipoDeTejer.Add(a);
 
-                        foreach (var item in fichero)
-                        {
-                            string a = item.NombreDeTejer.ToString();
-                            VistaTipoDeTejer.Add(a);
-
+                            }
                         }
                     }
                     else
@@ -133,21 +135,29 @@ namespace PatronesDeDiseño.Negocio
                                             where a.NombreDeTejer.Contains(TipoDetejer.Trim())
                                             select a).Distinct().ToList();
                         fichero = query_where1;
-                        foreach (var item in fichero)
-                        {
-                            string a = item.NombreDeTejer.ToString();
-                            VistaTipoDeTejer.Add(a);
+                        if (fichero.Count > 0)
+                        { 
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombreDeTejer.ToString();
+                                VistaTipoDeTejer.Add(a);
+
+                            }
 
                         }
-
                     }
 
-                    ficheroTipoDeTjer = LlenarResultado(VistaTipoDeTejer);
-
-
-
-                    cResultException = null;
-                    cSuccessful = true;
+                    if (VistaTipoDeTejer.Count > 0)
+                    {
+                        ficheroTipoDeTjer = LlenarResultado(VistaTipoDeTejer);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = " No se ha encontrado el elemento pedido";
+                        cSuccessful = false;
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,6 +166,9 @@ namespace PatronesDeDiseño.Negocio
                 cResultException = ex.ToString();
                 cSuccessful = false;
             }
+
+            VistaTipoDeTejer.Clear();
+            fichero.Clear();
             return ficheroTipoDeTjer;
         }
 
@@ -168,7 +181,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
 
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.TiposDeTejer
                                        where a.NombreDeTejer.Contains(tipoDetejer.Trim())
@@ -207,7 +220,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
 
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.TiposDeTejer
                                        where a.NombreDeTejer.Contains(tipoDetejer.Trim())
@@ -253,7 +266,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new TiposDeTejer { IdTiposTejer = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.TiposDeTejer.Attach(cliente);
                     contexto.TiposDeTejer.Remove(cliente);

@@ -19,15 +19,23 @@ namespace PatronesDeDiseño.Modelo
 
         public const string ErrorTipoPrenda = " No se ha encontrado la Prenda especificada";
 
+        public const string ErrorTipoRevista = " No se ha encontrado la Revista especificada";
+
         public const string BorraLanaOk = " La lana especificada se ha borrado de la base de datos";
 
         public const string BorraLanaNoOk = " Error al borrar la lana especificada";
+
+        public const string BorraRevistaOk = " La Revista especificada se ha borrado de la base de datos";
+
+        public const string BorraRevistaNoOk = " La Revista especificada NO se ha borrado de la base de datos";
 
         public const string Inercionok = " guardado correctamente en la base de datos";
 
         public const string InercionNoOk = " NO SE HA guardado correctamente en la base de datos";
 
         public const string lanas = " Lanas ";
+
+        public const string Revistas = " Revistas ";
 
         public const string Tptejer = " Tipo de tejer ";
 
@@ -50,6 +58,10 @@ namespace PatronesDeDiseño.Modelo
         public const string BorradoErrorPrenda = " No se ha borrado el Tipo de Prenda ";
 
         public const string BorradoPrenda = " Se ha borrado correctamente el Tipo de Prenda ";
+
+        public const string ModificaRevista = " Modificado correctamente los datos de la revista ";
+
+        public const string ModificaNoRevista = " No se han Modificado correctamente los datos de la revista ";
 
 
 

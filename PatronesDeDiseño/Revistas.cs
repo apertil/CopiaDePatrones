@@ -22,7 +22,7 @@ namespace PatronesDeDiseño
     
         public int IdRevistas { get; set; }
         public string NombreRevista { get; set; }
-        public Nullable<System.DateTime> FechaRevista { get; set; }
+        public string Autor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrones> Patrones { get; set; }

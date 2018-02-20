@@ -8,20 +8,20 @@ namespace PatronesDeDiseño.Negocio
 {
     public class PatronEntit
     {
-        private static contexto _instance;
+        private static PatronesEntities _instance;
 
         public PatronEntit()
         {
            
         }
 
-        public static contexto Instancia
+        public static PatronesEntities Instancia
         {
             get 
             {
                 if (_instance == null)
                 {
-                    _instance = new contexto();
+                    _instance = new PatronesEntities();
                 }
                 return _instance;
         }   }

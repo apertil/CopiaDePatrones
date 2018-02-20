@@ -87,19 +87,21 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     if (ConsPrenda == string.Empty)
                     {
                         var query_where = (from a in contexto.Prendas
                                            select a).Distinct().ToList();
                         fichero = query_where;
+                        if (fichero.Count > 0)
+                        { 
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombrePrendas.ToString();
+                                VistaModeloPrendas.Add(a);
 
-                        foreach (var item in fichero)
-                        {
-                            string a = item.NombrePrendas.ToString();
-                            VistaModeloPrendas.Add(a);
-
+                            }
                         }
                     }
                     else
@@ -109,18 +111,27 @@ namespace PatronesDeDiseño.Negocio
                                             where a.NombrePrendas.Contains(ConsPrenda.Trim())
                                             select a).Distinct().ToList();
                         fichero = query_where1;
-                        foreach (var item in fichero)
-                        {
-                            string a = item.NombrePrendas.ToString();
-                            VistaModeloPrendas.Add(a);
+                        if (fichero.Count > 0)
+                        { 
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombrePrendas.ToString();
+                                VistaModeloPrendas.Add(a);
 
+                            }
                         }
-
                     }
-
-                    ficheroPrenda = LlenarResultado(VistaModeloPrendas);
-                    cResultException = null;
-                    cSuccessful = true;
+                    if (VistaModeloPrendas.Count > 0)
+                    {
+                        ficheroPrenda = LlenarResultado(VistaModeloPrendas);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = " No se ha encontrado el elemento pedido";
+                        cSuccessful = false;
+                    }
                 }
 
             }
@@ -131,7 +142,8 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
 
             }
-
+            VistaModeloPrendas.Clear();
+            fichero.Clear();
             return ficheroPrenda;
         }
         /// <summary>
@@ -143,7 +155,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.Prendas
                                        where a.NombrePrendas.Contains(ConsPrenda.Trim())
@@ -180,7 +192,7 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = from a in contexto.Prendas
                                        where a.NombrePrendas == ConsPrenda.Trim()
@@ -222,7 +234,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Prendas { IdPrendas = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.Prendas.Attach(cliente);
                     cliente.NombrePrendas= prendaModificada;
@@ -250,7 +262,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Prendas { IdPrendas = idregistro };
-                using (contexto contexto = new contexto())
+                using (PatronesEntities contexto = new PatronesEntities())
                 {
                     contexto.Prendas.Attach(cliente);
                     contexto.Prendas.Remove(cliente);
