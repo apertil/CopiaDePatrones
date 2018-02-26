@@ -1,5 +1,6 @@
 ﻿using PatronesDeDiseño.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -46,16 +47,17 @@ namespace PatronesDeDiseño.Negocio
         public static List<TiposCaracteristicas> fichero;
         public static List<string> VistaModeloCaract = new List<string>();
         public static DataTable ficheroCaract;
+        public static ArrayList intermedio = new ArrayList();
 
         #endregion
 
         #region "3.- Metodos Publicos de la clase
 
         /// <summary>
-        /// Nueva prenda en base de datos
+        /// Insertar Nueva Caracteristica
         /// </summary>
-        /// <param name="NuevaPrenda"></param>
-        public static void InsertarPrenda(string NuevaCaract)
+        /// <param name="NuevaCaract"></param>
+        public static void InsertarCaracteristica(string NuevaCaract)
         {
             try
             {
@@ -80,7 +82,7 @@ namespace PatronesDeDiseño.Negocio
         /// </summary>
         /// <param name="ConsPrenda"></param>
         /// <returns></returns>
-        public static DataTable ConsultarPrenda(string ConsCaract)
+        public static DataTable ConsultarCaracteristica(string ConsCaract)
         {
 
             try
@@ -97,6 +99,9 @@ namespace PatronesDeDiseño.Negocio
                         {
                             string a = item.NombreCaracteristicas.ToString();
                             VistaModeloCaract.Add(a);
+                            intermedio.Add(VistaModeloCaract);
+                            cSuccessful = true;
+                            cResultException = "";
 
                         }
                     }
@@ -107,18 +112,31 @@ namespace PatronesDeDiseño.Negocio
                                             where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
                                             select a).Distinct().ToList();
                         fichero = query_where1;
-                        foreach (var item in fichero)
+                        if (fichero.Count > 0)
                         {
-                            string a = item.NombreCaracteristicas.ToString();
-                            VistaModeloCaract.Add(a);
-
+                            foreach (var item in fichero)
+                            {
+                                string a = item.NombreCaracteristicas.ToString();
+                                VistaModeloCaract.Add(a);
+                                intermedio.Add(VistaModeloCaract);
+                                cSuccessful = true;
+                                cResultException = "";
+                            }
                         }
+                    }
+                    if (intermedio.Count > 0)
+                    {
 
+                        ficheroCaract = LlenarResultado(intermedio);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = "No se ha encontrado la Característica";
+                        cSuccessful = false;
                     }
 
-                    ficheroCaract = LlenarResultado(VistaModeloCaract);
-                    cResultException = null;
-                    cSuccessful = true;
                 }
 
             }
@@ -132,82 +150,99 @@ namespace PatronesDeDiseño.Negocio
 
             return ficheroCaract;
         }
+        
         /// <summary>
-        /// Busca prendas por aproximacion
+        /// Busca la caracteristica exacta
         /// </summary>
-        /// <param name="ConsPrenda"></param>
+        /// <param name="ConsCaract"></param>
+        //public static void Buscar(string ConsCaract)
+        //{
+        //    try
+        //    {
+        //        using (PatronesEntities contexto = new PatronesEntities())
+        //        {
+        //            var query_where1 = from a in contexto.TiposCaracteristicas
+        //                               where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
+        //                               select a;
 
-        public static void BuscarPrenda(string ConsCaract)
-        {
-            try
-            {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
-                    var query_where1 = from a in contexto.TiposCaracteristicas
-                                       where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
-                                       select a;
+        //            foreach (var a in query_where1)
+        //            {
+        //                if (a.NombreCaracteristicas != null && a.NombreCaracteristicas.Contains(ConsCaract.Trim()))
+        //                {
+        //                    TCaractViewModel.IdTipCar = a.IdTiposCaract;
+        //                    cSuccessful = true;
+        //                }
+        //                else
+        //                {
+        //                    cResultException = "No se ha encontrado el elemento";
+        //                    cSuccessful = false;
+        //                }
 
-                    foreach (var a in query_where1)
-                    {
-                        if (a.NombreCaracteristicas != null && a.NombreCaracteristicas.Contains(ConsCaract.Trim()))
-                        {
-                            TCaractViewModel.IdTipCar = a.IdTiposCaract;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
+        //            }
 
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                cResultException = ex.ToString();
-                cSuccessful = false;
-            }
-        }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        cResultException = ex.ToString();
+        //        cSuccessful = false;
+        //    }
+        //}
         /// <summary>
         /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
         /// </summary>
         /// <param name="ConsPrenda"></param>
-        public static void BuscarExactoPrenda(string ConsCaract)
+        public static DataTable ConsultarExactoCaracteristica(string ConsCaract)
         {
             try
             {
                 using (PatronesEntities contexto = new PatronesEntities())
                 {
-                    var query_where1 = from a in contexto.TiposCaracteristicas
+                    var query_where1 = (from a in contexto.TiposCaracteristicas
                                        where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
-                                       select a;
-
-                    foreach (var a in query_where1)
+                                       select a).Distinct().ToList();
+                    fichero = query_where1;
+                    if (fichero.Count > 0)
                     {
-                        if (a.NombreCaracteristicas != null && a.NombreCaracteristicas == ConsCaract.Trim())
+                        foreach (var item in fichero)
                         {
-                            TCaractViewModel.IdTipCar = a.IdTiposCaract;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
 
+                            if (item.NombreCaracteristicas != null && item.NombreCaracteristicas == ConsCaract.Trim())
+                            {
+                                List<string> VistaCaract = new List<string>();
+                                TCaractViewModel.IdTipCar = item.IdTiposCaract;
+                                string a = item.NombreCaracteristicas.ToString();
+                                VistaCaract.Add(a);
+                                intermedio.Add(VistaCaract);
+                                cSuccessful = true;
+                                cResultException = "";
+                            }
+                        }
                     }
-
+                    if (intermedio.Count > 0)
+                    {
+                        ficheroCaract = LlenarResultado(intermedio);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = "No se ha encontrado la Característica";
+                        cSuccessful = false;
+                    }
 
                 }
             }
             catch (Exception ex)
             {
+                ficheroCaract =  null;
                 cResultException = ex.ToString();
                 cSuccessful = false;
             }
-
+            intermedio.Clear();
+            fichero.Clear();
+            fichero = null;
+            return ficheroCaract;
         }
 
         /// <summary>
@@ -215,7 +250,7 @@ namespace PatronesDeDiseño.Negocio
         /// </summary>
         /// <param name="idregistro"></param>
         /// <param name="prendaModificada"></param>
-        public static void ModificarPrenda(int idregistro, string CaractModificada)
+        public static void ModificarCaracteristica(int idregistro, string CaractModificada)
         {
             try
             {
@@ -243,7 +278,7 @@ namespace PatronesDeDiseño.Negocio
         /// Elimina el tipo de lana
         /// </summary>
         /// <param name="idregistro"></param>
-        public static void EliminarPrenda(int idregistro)
+        public static void EliminarCaracteristica(int idregistro)
         {
             try
             {
@@ -265,15 +300,17 @@ namespace PatronesDeDiseño.Negocio
             }
 
         }
-        private static DataTable LlenarResultado(List<string> list)
+        private static DataTable LlenarResultado(ArrayList Datos)
         {
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Tipo de Características");
 
-            foreach (string item in list)
+            foreach (List<string> item in Datos)
             {
-                dt.Rows.Add(item);
+                DataRow row = dt.NewRow();
+                row["Tipo de Características"] = item[0];
+                dt.Rows.Add(row);
             }
             return dt;
 
