@@ -45,7 +45,7 @@ namespace PatronesDeDiseño.Negocio
             get { return cSuccessful; }
         }
         public static List<TiposCaracteristicas> fichero;
-        public static List<string> VistaModeloCaract = new List<string>();
+        //public static List<string> VistaModeloCaract = new List<string>();
         public static DataTable ficheroCaract;
         public static ArrayList intermedio = new ArrayList();
 
@@ -97,6 +97,7 @@ namespace PatronesDeDiseño.Negocio
 
                         foreach (var item in fichero)
                         {
+                            List<string> VistaModeloCaract = new List<string>();
                             string a = item.NombreCaracteristicas.ToString();
                             VistaModeloCaract.Add(a);
                             intermedio.Add(VistaModeloCaract);
@@ -116,6 +117,7 @@ namespace PatronesDeDiseño.Negocio
                         {
                             foreach (var item in fichero)
                             {
+                                List<string> VistaModeloCaract = new List<string>();
                                 string a = item.NombreCaracteristicas.ToString();
                                 VistaModeloCaract.Add(a);
                                 intermedio.Add(VistaModeloCaract);
@@ -147,47 +149,13 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
 
             }
-
+            intermedio.Clear();
+            fichero.Clear();
+            fichero = null;
             return ficheroCaract;
         }
         
-        /// <summary>
-        /// Busca la caracteristica exacta
-        /// </summary>
-        /// <param name="ConsCaract"></param>
-        //public static void Buscar(string ConsCaract)
-        //{
-        //    try
-        //    {
-        //        using (PatronesEntities contexto = new PatronesEntities())
-        //        {
-        //            var query_where1 = from a in contexto.TiposCaracteristicas
-        //                               where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
-        //                               select a;
-
-        //            foreach (var a in query_where1)
-        //            {
-        //                if (a.NombreCaracteristicas != null && a.NombreCaracteristicas.Contains(ConsCaract.Trim()))
-        //                {
-        //                    TCaractViewModel.IdTipCar = a.IdTiposCaract;
-        //                    cSuccessful = true;
-        //                }
-        //                else
-        //                {
-        //                    cResultException = "No se ha encontrado el elemento";
-        //                    cSuccessful = false;
-        //                }
-
-        //            }
-
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        cResultException = ex.ToString();
-        //        cSuccessful = false;
-        //    }
-        //}
+               
         /// <summary>
         /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
         /// </summary>

@@ -31,12 +31,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridRevistas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnSalirConsultarRevista = new System.Windows.Forms.Button();
             this.txtConsultarRevista = new System.Windows.Forms.TextBox();
-            this.btnConsultarRevista = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSalirConsultarRevista = new System.Windows.Forms.Button();
+            this.btnConsultarRevista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridRevistas)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -47,12 +47,13 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(187, 15);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(154, 15);
+            this.label4.Size = new System.Drawing.Size(173, 15);
             this.label4.TabIndex = 31;
-            this.label4.Text = "Consulta Tipos de lana";
+            this.label4.Text = "Consulta Tipos de Revista";
             // 
             // dataGridRevistas
             // 
+            this.dataGridRevistas.AllowUserToAddRows = false;
             this.dataGridRevistas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridRevistas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridRevistas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -70,20 +71,6 @@
             this.label1.TabIndex = 29;
             this.label1.Text = "*Para consultar todas las Revistas dejar en blanco\r\n";
             // 
-            // btnSalirConsultarRevista
-            // 
-            this.btnSalirConsultarRevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalirConsultarRevista.Image = global::PatronesDeDiseño.Properties.Resources.exit;
-            this.btnSalirConsultarRevista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirConsultarRevista.Location = new System.Drawing.Point(220, 365);
-            this.btnSalirConsultarRevista.Name = "btnSalirConsultarRevista";
-            this.btnSalirConsultarRevista.Size = new System.Drawing.Size(88, 42);
-            this.btnSalirConsultarRevista.TabIndex = 28;
-            this.btnSalirConsultarRevista.Text = "Salir";
-            this.btnSalirConsultarRevista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalirConsultarRevista.UseVisualStyleBackColor = true;
-            this.btnSalirConsultarRevista.Click += new System.EventHandler(this.btnSalirConsultarRevista_Click);
-            // 
             // txtConsultarRevista
             // 
             this.txtConsultarRevista.BackColor = System.Drawing.Color.White;
@@ -91,21 +78,6 @@
             this.txtConsultarRevista.Name = "txtConsultarRevista";
             this.txtConsultarRevista.Size = new System.Drawing.Size(170, 20);
             this.txtConsultarRevista.TabIndex = 27;
-            // 
-            // btnConsultarRevista
-            // 
-            this.btnConsultarRevista.BackColor = System.Drawing.Color.White;
-            this.btnConsultarRevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConsultarRevista.Image = global::PatronesDeDiseño.Properties.Resources.find;
-            this.btnConsultarRevista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultarRevista.Location = new System.Drawing.Point(393, 134);
-            this.btnConsultarRevista.Name = "btnConsultarRevista";
-            this.btnConsultarRevista.Size = new System.Drawing.Size(138, 34);
-            this.btnConsultarRevista.TabIndex = 26;
-            this.btnConsultarRevista.Text = "Buscar Revista";
-            this.btnConsultarRevista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnConsultarRevista.UseVisualStyleBackColor = false;
-            this.btnConsultarRevista.Click += new System.EventHandler(this.btnConsultarRevista_Click);
             // 
             // label2
             // 
@@ -138,6 +110,35 @@
             this.label3.Size = new System.Drawing.Size(396, 59);
             this.label3.TabIndex = 6;
             this.label3.Text = "The Knitting Project";
+            // 
+            // btnSalirConsultarRevista
+            // 
+            this.btnSalirConsultarRevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalirConsultarRevista.Image = global::PatronesDeDiseño.Properties.Resources.exit;
+            this.btnSalirConsultarRevista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalirConsultarRevista.Location = new System.Drawing.Point(220, 365);
+            this.btnSalirConsultarRevista.Name = "btnSalirConsultarRevista";
+            this.btnSalirConsultarRevista.Size = new System.Drawing.Size(88, 42);
+            this.btnSalirConsultarRevista.TabIndex = 28;
+            this.btnSalirConsultarRevista.Text = "Salir";
+            this.btnSalirConsultarRevista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalirConsultarRevista.UseVisualStyleBackColor = true;
+            this.btnSalirConsultarRevista.Click += new System.EventHandler(this.btnSalirConsultarRevista_Click);
+            // 
+            // btnConsultarRevista
+            // 
+            this.btnConsultarRevista.BackColor = System.Drawing.Color.White;
+            this.btnConsultarRevista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultarRevista.Image = global::PatronesDeDiseño.Properties.Resources.find;
+            this.btnConsultarRevista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultarRevista.Location = new System.Drawing.Point(393, 134);
+            this.btnConsultarRevista.Name = "btnConsultarRevista";
+            this.btnConsultarRevista.Size = new System.Drawing.Size(138, 34);
+            this.btnConsultarRevista.TabIndex = 26;
+            this.btnConsultarRevista.Text = "Buscar Revista";
+            this.btnConsultarRevista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnConsultarRevista.UseVisualStyleBackColor = false;
+            this.btnConsultarRevista.Click += new System.EventHandler(this.btnConsultarRevista_Click);
             // 
             // FrmConsultarRevista
             // 

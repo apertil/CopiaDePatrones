@@ -1,4 +1,5 @@
-﻿using PatronesDeDiseño.Vista.Lanas;
+﻿using PatronesDeDiseño.Vista.Caracteristicas;
+using PatronesDeDiseño.Vista.Lanas;
 using PatronesDeDiseño.Vista.Prendas;
 using PatronesDeDiseño.Vista.Revistas;
 using PatronesDeDiseño.Vista.TiposPunto;
@@ -215,7 +216,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void nuevaCaracteristicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsertarCaracteristica inscar = new FrmInsertarCaracteristica();
+            inscar.Show();
         }
 
         /// <summary>
@@ -225,7 +227,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void buscarCaracteristicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultarCaracteristica consCaract = new FrmConsultarCaracteristica();
+            consCaract.Show();
         }
 
         /// <summary>

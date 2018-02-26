@@ -111,6 +111,18 @@
     <Compile Include="Vista\AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmConsultarCaracteristica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmConsultarCaracteristica.Designer.cs">
+      <DependentUpon>FrmConsultarCaracteristica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmInsertarCaracteristica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmInsertarCaracteristica.Designer.cs">
+      <DependentUpon>FrmInsertarCaracteristica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +217,12 @@
     </Compile>
     <EmbeddedResource Include="Vista\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Caracteristicas\FrmConsultarCaracteristica.resx">
+      <DependentUpon>FrmConsultarCaracteristica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Caracteristicas\FrmInsertarCaracteristica.resx">
+      <DependentUpon>FrmInsertarCaracteristica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
