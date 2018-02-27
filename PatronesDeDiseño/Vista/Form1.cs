@@ -238,7 +238,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void modificarCaracterisiticaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarCaracteristica modifcar = new FrmModificarCaracteristica();
+            modifcar.Show();
         }
 
         /// <summary>

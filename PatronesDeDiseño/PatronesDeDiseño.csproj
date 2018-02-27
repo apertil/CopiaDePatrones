@@ -123,6 +123,12 @@
     <Compile Include="Vista\Caracteristicas\FrmInsertarCaracteristica.Designer.cs">
       <DependentUpon>FrmInsertarCaracteristica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmModificarCaracteristica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmModificarCaracteristica.Designer.cs">
+      <DependentUpon>FrmModificarCaracteristica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Caracteristicas\FrmInsertarCaracteristica.resx">
       <DependentUpon>FrmInsertarCaracteristica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Caracteristicas\FrmModificarCaracteristica.resx">
+      <DependentUpon>FrmModificarCaracteristica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
