@@ -1,4 +1,5 @@
 ﻿using System;
+using PatronesDeDiseño.ViewModel;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
@@ -144,6 +145,116 @@ namespace PatronesDeDiseño.Negocio
             fichero = null;
             return ficheroRevistas;
         }
+
+        public static void ModificarRevista(int idregistro, string RevistaModificada, string autorModificado)
+        {
+            try
+            {
+                var cliente = new Revistas { IdRevistas = idregistro };
+                using (PatronesEntities contexto = new PatronesEntities())
+                {
+                    contexto.Revistas.Attach(cliente);
+                    cliente.NombreRevista = RevistaModificada;
+                    cliente.Autor = autorModificado;
+                    contexto.Configuration.ValidateOnSaveEnabled = false;
+                    contexto.SaveChanges();
+                    cResultException = null;
+                    cSuccessful = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                cResultException = ex.ToString();
+                cSuccessful = false;
+            }
+        }
+
+        public static DataTable ConsultarExactoRevista(string ConsPrenda)
+        {
+
+            try
+            {
+                using (PatronesEntities contexto = new PatronesEntities())
+                {
+                   
+                     var query_where1 = (from a in contexto.Revistas
+                         where a.NombreRevista.Contains(ConsPrenda.Trim())
+                         select a).Distinct().ToList();
+                        fichero = query_where1;
+                        if (fichero.Count > 0)
+                        {
+                            foreach (var item in fichero)
+                            {
+                                if (item.NombreRevista != null && item.NombreRevista == ConsPrenda.Trim())
+                                { 
+                                    List<string> VistaRevistas = new List<string>();
+                                    RevistasViewModel.IdRevista = item.IdRevistas;
+                                    string a = item.NombreRevista.ToString();
+                                    string b = item.Autor.ToString();
+                                    VistaRevistas.Add(a);
+                                    VistaRevistas.Add(b);
+                                    intermedio.Add(VistaRevistas);
+                                    cSuccessful = true;
+                                    cResultException = "";
+                                }
+                            }
+                        }
+
+                    
+                    if (intermedio.Count > 0)
+                    {
+                        ficheroRevistas = LlenarResultado(intermedio);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = "No se ha encontrado la revista";
+                        cSuccessful = false;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ficheroRevistas = null;
+                cResultException = ex.ToString();
+                cSuccessful = false;
+
+            }
+            intermedio.Clear();
+            fichero.Clear();
+            fichero = null;
+            return ficheroRevistas;
+        }
+
+        public static void EliminarRevista(int idregistro)
+        {
+            try
+            {
+                var cliente = new Revistas { IdRevistas = idregistro };
+                using (PatronesEntities contexto = new PatronesEntities())
+                {
+                    contexto.Revistas.Attach(cliente);
+                    contexto.Revistas.Remove(cliente);
+                    contexto.SaveChanges();
+                    cResultException = null;
+                    cSuccessful = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                cResultException = ex.ToString();
+                cSuccessful = false;
+            }
+
+        }
+
+
+
         private static DataTable LlenarResultado(ArrayList Datos)
         {
 

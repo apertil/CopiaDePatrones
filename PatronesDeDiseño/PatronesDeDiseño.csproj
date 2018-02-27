@@ -185,11 +185,23 @@
     <Compile Include="Vista\Revistas\FrmConsultarRevista.Designer.cs">
       <DependentUpon>FrmConsultarRevista.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Revistas\FrmEliminarRevista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmEliminarRevista.Designer.cs">
+      <DependentUpon>FrmEliminarRevista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Revistas\FrmInsertarRevista.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vista\Revistas\FrmInsertarRevista.Designer.cs">
       <DependentUpon>FrmInsertarRevista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmModificarRevistas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Revistas\FrmModificarRevistas.Designer.cs">
+      <DependentUpon>FrmModificarRevistas.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.cs">
       <SubType>Form</SubType>
@@ -264,8 +276,14 @@
     <EmbeddedResource Include="Vista\Revistas\FrmConsultarRevista.resx">
       <DependentUpon>FrmConsultarRevista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Revistas\FrmEliminarRevista.resx">
+      <DependentUpon>FrmEliminarRevista.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\Revistas\FrmInsertarRevista.resx">
       <DependentUpon>FrmInsertarRevista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Revistas\FrmModificarRevistas.resx">
+      <DependentUpon>FrmModificarRevistas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\TiposPunto\FrmBorrarTipoDeTejer.resx">
       <DependentUpon>FrmBorrarTipoDeTejer.cs</DependentUpon>

@@ -12,7 +12,7 @@ namespace PatronesDeDiseño.ViewModel
 
         public static string NombRevist { get; set; }
 
-        public string AutRevist { get; set; }
+        public static string AutRevist { get; set; }
 
     }
 }

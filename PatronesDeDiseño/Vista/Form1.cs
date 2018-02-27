@@ -284,7 +284,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void modificarRevistaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarRevistas amodifRev = new FrmModificarRevistas();
+            amodifRev.Show();
         }
         /// <summary>
         /// Borrar Revista de la BBDD
@@ -294,7 +295,8 @@ namespace PatronesDeDiseño.Vista
 
         private void borrarRevistaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmEliminarRevista elimRevis = new FrmEliminarRevista();
+            elimRevis.Show();
         }
         #endregion
 
