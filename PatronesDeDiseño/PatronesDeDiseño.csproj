@@ -64,7 +64,9 @@
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Consts.cs" />
+    <Compile Include="Negocio\ControlAutores.cs" />
     <Compile Include="Negocio\ControlCaracteristicas.cs" />
+    <Compile Include="Negocio\ControlGeneroEdad.cs" />
     <Compile Include="Negocio\ControlLanas.cs" />
     <Compile Include="Negocio\ControlRevistas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
@@ -100,6 +102,8 @@
     <Compile Include="TiposDeTejer.cs">
       <DependentUpon>PatronesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AutorViewModel.cs" />
+    <Compile Include="ViewModel\GeneroEdadViewModel.cs" />
     <Compile Include="ViewModel\LanasViewModel.cs" />
     <Compile Include="ViewModel\PrendasViewModel.cs" />
     <Compile Include="ViewModel\RevistasViewModel.cs" />
@@ -116,6 +120,12 @@
     </Compile>
     <Compile Include="Vista\Caracteristicas\FrmConsultarCaracteristica.Designer.cs">
       <DependentUpon>FrmConsultarCaracteristica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmEliminarCaract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Caracteristicas\FrmEliminarCaract.Designer.cs">
+      <DependentUpon>FrmEliminarCaract.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\Caracteristicas\FrmInsertarCaracteristica.cs">
       <SubType>Form</SubType>
@@ -238,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Caracteristicas\FrmConsultarCaracteristica.resx">
       <DependentUpon>FrmConsultarCaracteristica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Caracteristicas\FrmEliminarCaract.resx">
+      <DependentUpon>FrmEliminarCaract.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Caracteristicas\FrmInsertarCaracteristica.resx">
       <DependentUpon>FrmInsertarCaracteristica.cs</DependentUpon>

@@ -2,6 +2,7 @@
 using PatronesDeDiseño.ViewModel;
 using PatronesDeDiseño.Vista.Lanas;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -45,9 +46,10 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<Lanas> fichero;
+        public static List<Lanas> ListaficheroLanas;
         public static List<string> VistaModeloLanas = new List<string>();
         public static DataTable ficherolana;
+        public static ArrayList intermedio = new ArrayList();
 
 
 
@@ -80,6 +82,11 @@ namespace PatronesDeDiseño.Negocio
 
         }
 
+        /// <summary>
+        /// Consulta Grosor de lana
+        /// </summary>
+        /// <param name="grosorLana"></param>
+        /// <returns></returns>
         public static DataTable ConsultarGrosorLana(string grosorLana)
         {
             
@@ -91,13 +98,18 @@ namespace PatronesDeDiseño.Negocio
                     {
                         var query_where = (from a in contexto.Lanas
                                           select a).Distinct().ToList();
-                        fichero = query_where;
-                        if (fichero.Count > 0)
+                        ListaficheroLanas = query_where;
+                        if (ListaficheroLanas.Count > 0)
                         { 
-                            foreach (var item in fichero)
+                            foreach (var item in ListaficheroLanas)
                             {
+
+                                List<string> VistaLana = new List<string>();
                                 string a = item.NombreLana.ToString();
-                                VistaModeloLanas.Add(a);
+                                VistaLana.Add(a);
+                                intermedio.Add(VistaLana);
+                                cSuccessful = true;
+                                cResultException = "";
 
                             }
                         }
@@ -108,21 +120,25 @@ namespace PatronesDeDiseño.Negocio
                         var query_where1 = (from a in contexto.Lanas
                                            where a.NombreLana.Contains(grosorLana.Trim())
                                            select a).Distinct().ToList();
-                        fichero = query_where1;
-                        if (fichero.Count > 0)
+                        ListaficheroLanas = query_where1;
+                        if (ListaficheroLanas.Count > 0)
                         {
-                            foreach (var item in fichero)
+                            foreach (var item in ListaficheroLanas)
                             {
+                                List<string> VistaLana = new List<string>();
                                 string a = item.NombreLana.ToString();
-                                VistaModeloLanas.Add(a);
+                                VistaLana.Add(a);
+                                intermedio.Add(VistaLana);
+                                cSuccessful = true;
+                                cResultException = "";
 
                             }
                         }
                     }
 
-                     if (VistaModeloLanas.Count > 0)
+                     if (intermedio.Count > 0)
                      {
-                        ficherolana = LlenarResultado(VistaModeloLanas);
+                        ficherolana = LlenarResultado(intermedio);
                         cResultException = null;
                         cSuccessful = true;
                      }
@@ -142,94 +158,73 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
                 
             }
-            VistaModeloLanas.Clear();
-            fichero.Clear();
+            intermedio.Clear();
+            ListaficheroLanas.Clear();
+            ListaficheroLanas = null;
             return ficherolana;
         }
-        /// <summary>
-        /// Busca nuevo tipo de lana
-        /// </summary>
-        /// <param name="grosorLana"></param>
-        public static void BuscarGrosorDelana(string grosorLana)
-        {
-            try
-            {
-                using (PatronesEntities contexto = new PatronesEntities())
-                { 
-                  var query_where1 = from a in contexto.Lanas
-                                       where a.NombreLana.Contains(grosorLana.Trim())
-                                       select a;
-                    
-                    foreach (var a in query_where1)
-                    {
-                        if (a.NombreLana != null && a.NombreLana.Contains(grosorLana.Trim()))
-                        {
-                            LanasViewModel.IndiceBuscaLanas = a.IdLana;
-                            cResultException = null;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
-
-                    }
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                cResultException = ex.ToString();
-                cSuccessful = false;
-            }
-        }
+      
         /// <summary>
         /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
         /// </summary>
         /// <param name="grosorLana"></param>
-        public static void BuscarExactoGrosorDelana(string grosorLana)
+        public static DataTable BuscarExactoGrosorDelana(string grosorLana)
         {
+
             try
             {
                 using (PatronesEntities contexto = new PatronesEntities())
                 {
-                    var query_where1 = from a in contexto.Lanas
-                                       where a.NombreLana == grosorLana.Trim()
-                                       select a;
+                    var query_where1 = (from a in contexto.Lanas
+                                       where a.NombreLana.ToLower() == grosorLana.Trim().ToLower()
+                                       select a).Distinct().ToList();
 
-                    foreach (var a in query_where1)
+                    ListaficheroLanas = query_where1;
+                    if (ListaficheroLanas.Count > 0)
                     {
-                        if (a.NombreLana != null && a.NombreLana == grosorLana.Trim())
+                        foreach (var item in ListaficheroLanas)
                         {
-                            LanasViewModel.IndiceBuscaLanas = a.IdLana;
-                            cResultException = null;
-                            cSuccessful = true;
+                            if (item.NombreLana != null && item.NombreLana.ToLower() == grosorLana.Trim().ToLower())
+                            {
+                                List<string> VistaLana = new List<string>();
+                                LanasViewModel.IndiceBuscaLanas = item.IdLana;
+                                string a = item.NombreLana.ToString();
+                                VistaLana.Add(a);
+                                intermedio.Add(VistaLana);
+                                cSuccessful = true;
+                                cResultException = "";
+                            }
                         }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
-
                     }
 
 
+                    if (intermedio.Count > 0)
+                    {
+                        ficherolana = LlenarResultado(intermedio);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = "No se ha encontrado la revista";
+                        cSuccessful = false;
+                    }
                 }
+
             }
             catch (Exception ex)
             {
+                ficherolana = null;
                 cResultException = ex.ToString();
                 cSuccessful = false;
+
             }
+            intermedio.Clear();
+            ListaficheroLanas.Clear();
+            ListaficheroLanas = null;
+            return ficherolana;
+           
         }
-
-
-
-
-
-
 
 
         /// <summary>
@@ -287,15 +282,24 @@ namespace PatronesDeDiseño.Negocio
             }
 
         }
-       private static DataTable LlenarResultado(List<string> list)
+
+        /// <summary>
+        /// Rellena el datatable para los data gried
+        /// </summary>
+        /// <param name="Datos"></param>
+        /// <returns></returns>
+       private static DataTable LlenarResultado(ArrayList Datos)
         {
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Nombre Lana");
 
-            foreach (string item in list)
+            foreach (List<string> item in Datos)
             {
-                dt.Rows.Add(item);
+                DataRow row = dt.NewRow();
+                row["Nombre Lana"] = item[0];
+                dt.Rows.Add(row);
+               
             }
             return dt;
 
@@ -304,3 +308,42 @@ namespace PatronesDeDiseño.Negocio
         #endregion
    }
 }
+/// <summary>
+/// Busca nuevo tipo de lana
+/// </summary>
+/// <param name="grosorLana"></param>
+//public static void BuscarGrosorDelana(string grosorLana)
+//{
+//    try
+//    {
+//        using (PatronesEntities contexto = new PatronesEntities())
+//        { 
+//          var query_where1 = from a in contexto.Lanas
+//                               where a.NombreLana.Contains(grosorLana.Trim())
+//                               select a;
+
+//            foreach (var a in query_where1)
+//            {
+//                if (a.NombreLana != null && a.NombreLana.Contains(grosorLana.Trim()))
+//                {
+//                    LanasViewModel.IndiceBuscaLanas = a.IdLana;
+//                    cResultException = null;
+//                    cSuccessful = true;
+//                }
+//                else
+//                {
+//                    cResultException = "No se ha encontrado el elemento";
+//                    cSuccessful = false;
+//                }
+
+//            }
+
+
+//        }
+//    }
+//    catch (Exception ex)
+//    {
+//        cResultException = ex.ToString();
+//        cSuccessful = false;
+//    }
+//}

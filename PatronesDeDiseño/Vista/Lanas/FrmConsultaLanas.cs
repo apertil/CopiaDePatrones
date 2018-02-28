@@ -32,11 +32,12 @@ namespace PatronesDeDiseño.Vista.Lanas
         private void btnConsultarLana_Click(object sender, EventArgs e)
         {
       
-           DataTable table = ControlLanas.ConsultarGrosorLana(txtConsultarLana.Text);
+           DataTable table = ControlLanas.ConsultarGrosorLana(txtConsultarLana.Text.TrimStart().TrimEnd());
             if (ControlLanas.Result)
             {
                 dataGridLanas.AutoGenerateColumns = true;
                 dataGridLanas.DataSource = table;
+                txtConsultarLana.Text = " ";
             }
             else
             {

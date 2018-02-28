@@ -9,7 +9,7 @@ namespace PatronesDeDiseño.ViewModel
    public partial class LanasViewModel : Lanas
    {
         public static int IndiceBuscaLanas { get; set; }
-        public string Nombre { get; set; }
+        public static string NombLana { get; set; }
         public static List<Lanas> LstLanas = new List<Lanas>();
    }
     

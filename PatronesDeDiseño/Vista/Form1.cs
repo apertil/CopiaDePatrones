@@ -249,7 +249,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void borrarCaracteristicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmEliminarCaract elimCaract = new FrmEliminarCaract();
+            elimCaract.Show();
         }
         #endregion
 

@@ -167,7 +167,7 @@ namespace PatronesDeDiseño.Negocio
                 using (PatronesEntities contexto = new PatronesEntities())
                 {
                     var query_where1 = (from a in contexto.TiposCaracteristicas
-                                       where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
+                                       where a.NombreCaracteristicas.Contains(ConsCaract.Trim().ToLower())
                                        select a).Distinct().ToList();
                     fichero = query_where1;
                     if (fichero.Count > 0)
@@ -175,7 +175,7 @@ namespace PatronesDeDiseño.Negocio
                         foreach (var item in fichero)
                         {
 
-                            if (item.NombreCaracteristicas != null && item.NombreCaracteristicas == ConsCaract.Trim())
+                            if (item.NombreCaracteristicas != null && item.NombreCaracteristicas.ToLower() == ConsCaract.Trim().ToLower())
                             {
                                 List<string> VistaCaract = new List<string>();
                                 TCaractViewModel.IdTipCar = item.IdTiposCaract;

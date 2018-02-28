@@ -187,7 +187,7 @@ namespace PatronesDeDiseño.Negocio
                         {
                             foreach (var item in fichero)
                             {
-                                if (item.NombreRevista != null && item.NombreRevista == ConsPrenda.Trim())
+                            if (item.NombreRevista != null && item.NombreRevista.ToLower() == ConsPrenda.Trim().ToLower())
                                 { 
                                     List<string> VistaRevistas = new List<string>();
                                     RevistasViewModel.IdRevista = item.IdRevistas;

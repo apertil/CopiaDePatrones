@@ -32,14 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarLana = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtModificaLana = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSalirModificarLana = new System.Windows.Forms.Button();
             this.btnModificalana = new System.Windows.Forms.Button();
             this.btnBuscarLana = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridModifLana = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridModifLana)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -71,23 +71,6 @@
             this.txtBuscarLana.Size = new System.Drawing.Size(138, 20);
             this.txtBuscarLana.TabIndex = 8;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 198);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 16);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Modificar el nombre";
-            // 
-            // txtModificaLana
-            // 
-            this.txtModificaLana.Location = new System.Drawing.Point(230, 194);
-            this.txtModificaLana.Name = "txtModificaLana";
-            this.txtModificaLana.Size = new System.Drawing.Size(138, 20);
-            this.txtModificaLana.TabIndex = 11;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -102,7 +85,7 @@
             this.btnSalirModificarLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalirModificarLana.Image = global::PatronesDeDiseño.Properties.Resources.exit;
             this.btnSalirModificarLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirModificarLana.Location = new System.Drawing.Point(251, 236);
+            this.btnSalirModificarLana.Location = new System.Drawing.Point(217, 360);
             this.btnSalirModificarLana.Name = "btnSalirModificarLana";
             this.btnSalirModificarLana.Size = new System.Drawing.Size(88, 42);
             this.btnSalirModificarLana.TabIndex = 13;
@@ -117,7 +100,7 @@
             this.btnModificalana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificalana.Image = global::PatronesDeDiseño.Properties.Resources.config1;
             this.btnModificalana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificalana.Location = new System.Drawing.Point(440, 189);
+            this.btnModificalana.Location = new System.Drawing.Point(441, 263);
             this.btnModificalana.Name = "btnModificalana";
             this.btnModificalana.Size = new System.Drawing.Size(122, 35);
             this.btnModificalana.TabIndex = 12;
@@ -131,7 +114,7 @@
             this.btnBuscarLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarLana.Image = global::PatronesDeDiseño.Properties.Resources.find;
             this.btnBuscarLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarLana.Location = new System.Drawing.Point(441, 140);
+            this.btnBuscarLana.Location = new System.Drawing.Point(441, 182);
             this.btnBuscarLana.Name = "btnBuscarLana";
             this.btnBuscarLana.Size = new System.Drawing.Size(122, 34);
             this.btnBuscarLana.TabIndex = 9;
@@ -146,22 +129,32 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(248, 19);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 16);
+            this.label4.Size = new System.Drawing.Size(110, 16);
             this.label4.TabIndex = 15;
-            this.label4.Text = "Buscar Lana";
+            this.label4.Text = "Modificar Lana";
+            // 
+            // dataGridModifLana
+            // 
+            this.dataGridModifLana.AllowUserToAddRows = false;
+            this.dataGridModifLana.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridModifLana.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridModifLana.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridModifLana.Location = new System.Drawing.Point(113, 182);
+            this.dataGridModifLana.Name = "dataGridModifLana";
+            this.dataGridModifLana.Size = new System.Drawing.Size(269, 150);
+            this.dataGridModifLana.TabIndex = 47;
             // 
             // FrmModificarLanas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(652, 294);
+            this.ClientSize = new System.Drawing.Size(652, 429);
+            this.Controls.Add(this.dataGridModifLana);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalirModificarLana);
             this.Controls.Add(this.btnModificalana);
-            this.Controls.Add(this.txtModificaLana);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBuscarLana);
             this.Controls.Add(this.txtBuscarLana);
             this.Controls.Add(this.label2);
@@ -172,6 +165,7 @@
             this.Text = "Modificar Lanas";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridModifLana)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -183,11 +177,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscarLana;
         private System.Windows.Forms.Button btnBuscarLana;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtModificaLana;
         private System.Windows.Forms.Button btnModificalana;
         private System.Windows.Forms.Button btnSalirModificarLana;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridModifLana;
     }
 }

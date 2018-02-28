@@ -51,10 +51,12 @@ namespace PatronesDeDiseño.Vista.Caracteristicas
             {
                 MessageBox.Show("Se ha modificado correctamente la Caracteristica", "Modificacion Correcta", MessageBoxButtons.OK);
                 dataGridCaract.DataSource = null;
+                btnModificarCaract.Enabled = false;
             }
             else
             {
                 MessageBox.Show(ControlCaracteristicas.ResultException, "Modificacion InCorrecta", MessageBoxButtons.OK);
+                btnModificarCaract.Enabled = false;
             }
         }
     }
