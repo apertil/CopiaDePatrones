@@ -51,6 +51,7 @@ namespace PatronesDeDiseño.Vista.Caracteristicas
                     btnEliminarCaract.Enabled = false;
                     MessageBox.Show(txtBorrarCaract.Text + "Borrada Correctamente", "Borrado Correcto", MessageBoxButtons.OK);
                     dataGridBorrCaract.DataSource = null;
+
                 }
                 else
                 {

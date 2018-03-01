@@ -47,7 +47,7 @@ namespace PatronesDeDiseño.Negocio
             get { return cSuccessful; }
         }
         public static List<Lanas> ListaficheroLanas;
-        public static List<string> VistaModeloLanas = new List<string>();
+      //  public static List<string> VistaModeloLanas = new List<string>();
         public static DataTable ficherolana;
         public static ArrayList intermedio = new ArrayList();
 
@@ -308,42 +308,3 @@ namespace PatronesDeDiseño.Negocio
         #endregion
    }
 }
-/// <summary>
-/// Busca nuevo tipo de lana
-/// </summary>
-/// <param name="grosorLana"></param>
-//public static void BuscarGrosorDelana(string grosorLana)
-//{
-//    try
-//    {
-//        using (PatronesEntities contexto = new PatronesEntities())
-//        { 
-//          var query_where1 = from a in contexto.Lanas
-//                               where a.NombreLana.Contains(grosorLana.Trim())
-//                               select a;
-
-//            foreach (var a in query_where1)
-//            {
-//                if (a.NombreLana != null && a.NombreLana.Contains(grosorLana.Trim()))
-//                {
-//                    LanasViewModel.IndiceBuscaLanas = a.IdLana;
-//                    cResultException = null;
-//                    cSuccessful = true;
-//                }
-//                else
-//                {
-//                    cResultException = "No se ha encontrado el elemento";
-//                    cSuccessful = false;
-//                }
-
-//            }
-
-
-//        }
-//    }
-//    catch (Exception ex)
-//    {
-//        cResultException = ex.ToString();
-//        cSuccessful = false;
-//    }
-//}

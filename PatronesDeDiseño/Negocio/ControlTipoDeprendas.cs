@@ -1,5 +1,6 @@
 ﻿using PatronesDeDiseño.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -43,9 +44,9 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<Prendas> fichero;
-        public static List<string> VistaModeloPrendas = new List<string>();
+        public static List<Prendas> ListaficheroPrendas;
         public static DataTable ficheroPrenda;
+        public static ArrayList intermedio = new ArrayList();
 
 
 
@@ -53,10 +54,10 @@ namespace PatronesDeDiseño.Negocio
 
         #region "3.- Metodos Publicos de la clase
 
-       /// <summary>
-       /// Nueva prenda en base de datos
-       /// </summary>
-       /// <param name="NuevaPrenda"></param>
+        /// <summary>
+        /// Nueva prenda en base de datos
+        /// </summary>
+        /// <param name="NuevaPrenda"></param>
         public static void InsertarPrenda(string NuevaPrenda)
         {
             try
@@ -93,14 +94,17 @@ namespace PatronesDeDiseño.Negocio
                     {
                         var query_where = (from a in contexto.Prendas
                                            select a).Distinct().ToList();
-                        fichero = query_where;
-                        if (fichero.Count > 0)
+                        ListaficheroPrendas = query_where;
+                        if (ListaficheroPrendas.Count > 0)
                         { 
-                            foreach (var item in fichero)
+                            foreach (var item in ListaficheroPrendas)
                             {
+                                List<string> VistaModeloPrendas = new List<string>();
                                 string a = item.NombrePrendas.ToString();
                                 VistaModeloPrendas.Add(a);
-
+                                intermedio.Add(VistaModeloPrendas);
+                                cSuccessful = true;
+                                cResultException = "";
                             }
                         }
                     }
@@ -110,20 +114,24 @@ namespace PatronesDeDiseño.Negocio
                         var query_where1 = (from a in contexto.Prendas
                                             where a.NombrePrendas.Contains(ConsPrenda.Trim())
                                             select a).Distinct().ToList();
-                        fichero = query_where1;
-                        if (fichero.Count > 0)
+                        ListaficheroPrendas = query_where1;
+                        if (ListaficheroPrendas.Count > 0)
                         { 
-                            foreach (var item in fichero)
+                            foreach (var item in ListaficheroPrendas)
                             {
+                                List<string> VistaModeloPrendas = new List<string>();
                                 string a = item.NombrePrendas.ToString();
                                 VistaModeloPrendas.Add(a);
+                                intermedio.Add(VistaModeloPrendas);
+                                cSuccessful = true;
+                                cResultException = "";
 
                             }
                         }
                     }
-                    if (VistaModeloPrendas.Count > 0)
+                    if (intermedio.Count > 0)
                     {
-                        ficheroPrenda = LlenarResultado(VistaModeloPrendas);
+                        ficheroPrenda = LlenarResultado(intermedio);
                         cResultException = null;
                         cSuccessful = true;
                     }
@@ -142,86 +150,71 @@ namespace PatronesDeDiseño.Negocio
                 cSuccessful = false;
 
             }
-            VistaModeloPrendas.Clear();
-            fichero.Clear();
+            intermedio.Clear();
+            ListaficheroPrendas.Clear();
+            ListaficheroPrendas = null;
             return ficheroPrenda;
         }
-        /// <summary>
-        /// Busca prendas por aproximacion
-        /// </summary>
-        /// <param name="ConsPrenda"></param>
-      
-        public static void BuscarPrenda(string ConsPrenda)
-        {
-            try
-            {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
-                    var query_where1 = from a in contexto.Prendas
-                                       where a.NombrePrendas.Contains(ConsPrenda.Trim())
-                                       select a;
-
-                    foreach (var a in query_where1)
-                    {
-                        if (a.NombrePrendas != null && a.NombrePrendas.Contains(ConsPrenda.Trim()))
-                        {
-                            PrendasViewModel.IdPren = a.IdPrendas;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
-
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                cResultException = ex.ToString();
-                cSuccessful = false;
-            }
-        }
+        
         /// <summary>
         /// Busqueda exacta del elemento para no modificar o borrar el elemento equivocado
         /// </summary>
         /// <param name="ConsPrenda"></param>
-        public static void BuscarExactoPrenda(string ConsPrenda)
+        public static DataTable BuscarExactoPrenda(string ConsPrenda)
         {
             try
             {
                 using (PatronesEntities contexto = new PatronesEntities())
                 {
-                    var query_where1 = from a in contexto.Prendas
-                                       where a.NombrePrendas == ConsPrenda.Trim()
-                                       select a;
+                    var query_where1 = (from a in contexto.Prendas
+                                       where a.NombrePrendas.ToLower() == ConsPrenda.Trim().ToLower()
+                                        select a).Distinct().ToList();
+                    ListaficheroPrendas = query_where1;
 
-                    foreach (var a in query_where1)
+                    if (ListaficheroPrendas.Count > 0)
                     {
-                        if (a.NombrePrendas != null && a.NombrePrendas == ConsPrenda.Trim())
+                        foreach (var item in query_where1)
                         {
-                            PrendasViewModel.IdPren = a.IdPrendas;
-                            cSuccessful = true;
-                        }
-                        else
-                        {
-                            cResultException = "No se ha encontrado el elemento";
-                            cSuccessful = false;
-                        }
+                            if (item.NombrePrendas != null && item.NombrePrendas.ToLower() == ConsPrenda.Trim().ToLower())
+                            {
+                                List<string> VistaModeloPrendas = new List<string>();
+                                PrendasViewModel.IdPren = item.IdPrendas;
+                                string a = item.NombrePrendas.ToString();
+                                VistaModeloPrendas.Add(a);
+                                intermedio.Add(VistaModeloPrendas);
+                                cSuccessful = true;
+                                cResultException = "";
 
+
+                            }
+                            
+                        }
                     }
-
-
+                    if (intermedio.Count > 0)
+                    {
+                        ficheroPrenda = LlenarResultado(intermedio);
+                        cResultException = null;
+                        cSuccessful = true;
+                    }
+                    else
+                    {
+                        cResultException = "No se ha encontrado el elemento";
+                        cSuccessful = false;
+                    }
                 }
             }
             catch (Exception ex)
             {
+                ficheroPrenda = null;
                 cResultException = ex.ToString();
                 cSuccessful = false;
+
             }
-        
+            intermedio.Clear();
+            ListaficheroPrendas.Clear();
+            ListaficheroPrendas = null;
+            return ficheroPrenda;
+
         }
 
         /// <summary>
@@ -279,15 +272,23 @@ namespace PatronesDeDiseño.Negocio
             }
 
         }
-        private static DataTable LlenarResultado(List<string> list)
+        /// <summary>
+        /// Rellenar los Datagrids
+        /// </summary>
+        /// <param name="Datos"></param>
+        /// <returns></returns>
+        private static DataTable LlenarResultado(ArrayList Datos)
         {
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Nombre Tipo de Prenda");
 
-            foreach (string item in list)
+            foreach (List<string> item in Datos)
             {
-                dt.Rows.Add(item);
+                DataRow row = dt.NewRow();
+                row["Nombre Tipo de Prenda"] = item[0];
+                dt.Rows.Add(row);
+
             }
             return dt;
 

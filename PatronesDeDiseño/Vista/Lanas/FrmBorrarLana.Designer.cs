@@ -37,7 +37,9 @@
             this.btnBorraLana = new System.Windows.Forms.Button();
             this.btnBuscarBorrarLana = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridBorrTipolana = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBorrTipolana)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -85,7 +87,7 @@
             this.btnSalirBorrarrLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalirBorrarrLana.Image = global::PatronesDeDiseño.Properties.Resources.exit;
             this.btnSalirBorrarrLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirBorrarrLana.Location = new System.Drawing.Point(325, 224);
+            this.btnSalirBorrarrLana.Location = new System.Drawing.Point(186, 392);
             this.btnSalirBorrarrLana.Name = "btnSalirBorrarrLana";
             this.btnSalirBorrarrLana.Size = new System.Drawing.Size(88, 42);
             this.btnSalirBorrarrLana.TabIndex = 14;
@@ -100,7 +102,7 @@
             this.btnBorraLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBorraLana.Image = global::PatronesDeDiseño.Properties.Resources.config1;
             this.btnBorraLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBorraLana.Location = new System.Drawing.Point(104, 231);
+            this.btnBorraLana.Location = new System.Drawing.Point(387, 308);
             this.btnBorraLana.Name = "btnBorraLana";
             this.btnBorraLana.Size = new System.Drawing.Size(122, 35);
             this.btnBorraLana.TabIndex = 13;
@@ -115,7 +117,7 @@
             this.btnBuscarBorrarLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarBorrarLana.Image = global::PatronesDeDiseño.Properties.Resources.find;
             this.btnBuscarBorrarLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarBorrarLana.Location = new System.Drawing.Point(387, 169);
+            this.btnBuscarBorrarLana.Location = new System.Drawing.Point(387, 235);
             this.btnBuscarBorrarLana.Name = "btnBuscarBorrarLana";
             this.btnBuscarBorrarLana.Size = new System.Drawing.Size(122, 34);
             this.btnBuscarBorrarLana.TabIndex = 10;
@@ -134,12 +136,24 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Borrar Tipo de lana";
             // 
+            // dataGridBorrTipolana
+            // 
+            this.dataGridBorrTipolana.AllowUserToAddRows = false;
+            this.dataGridBorrTipolana.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridBorrTipolana.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridBorrTipolana.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBorrTipolana.Location = new System.Drawing.Point(100, 221);
+            this.dataGridBorrTipolana.Name = "dataGridBorrTipolana";
+            this.dataGridBorrTipolana.Size = new System.Drawing.Size(269, 150);
+            this.dataGridBorrTipolana.TabIndex = 64;
+            // 
             // FrmBorrarLana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(538, 295);
+            this.ClientSize = new System.Drawing.Size(538, 456);
+            this.Controls.Add(this.dataGridBorrTipolana);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSalirBorrarrLana);
@@ -154,6 +168,7 @@
             this.Text = "Borrar Lana";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBorrTipolana)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +183,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridBorrTipolana;
     }
 }
