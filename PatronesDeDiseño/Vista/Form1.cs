@@ -1,4 +1,6 @@
-﻿using PatronesDeDiseño.Vista.Caracteristicas;
+﻿using PatronesDeDiseño.Vista.Autores;
+using PatronesDeDiseño.Vista.Caracteristicas;
+using PatronesDeDiseño.Vista.Genero;
 using PatronesDeDiseño.Vista.Lanas;
 using PatronesDeDiseño.Vista.Prendas;
 using PatronesDeDiseño.Vista.Revistas;
@@ -313,7 +315,8 @@ namespace PatronesDeDiseño.Vista
 
         private void nuevoAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsertarAutor insaut = new FrmInsertarAutor();
+            insaut.ShowDialog();
         }
 
 
@@ -324,7 +327,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void busquedaAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultarAutor conAut = new FrmConsultarAutor();
+            conAut.ShowDialog();
         }
 
         /// <summary>
@@ -334,7 +338,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void modificarAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarAutor modaut = new FrmModificarAutor();
+            modaut.ShowDialog();
         }
 
         /// <summary>
@@ -344,7 +349,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void borrarAutorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmEliminarAutor elimaut = new FrmEliminarAutor();
+            elimaut.ShowDialog();
         }
 
 
@@ -359,7 +365,9 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void nuevoGeneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsertarGener insgen = new FrmInsertarGener();
+            insgen.ShowDialog();
+
         }
 
         /// <summary>
@@ -369,7 +377,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void consultaGeneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmConsultarGeneroEdad ConsGen = new FrmConsultarGeneroEdad();
+            ConsGen.ShowDialog();
         }
 
         /// <summary>
@@ -379,7 +388,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void modificarGeneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmModificarGenero modgen = new FrmModificarGenero();
+            modgen.ShowDialog();
         }
 
         /// <summary>
@@ -390,7 +400,9 @@ namespace PatronesDeDiseño.Vista
 
         private void borrarGeneroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmEliminarGenero elimgen = new FrmEliminarGenero();
+            elimgen.ShowDialog();
+
         }
 
         #endregion

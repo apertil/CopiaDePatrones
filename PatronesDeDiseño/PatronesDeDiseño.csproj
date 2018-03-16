@@ -115,11 +115,29 @@
     <Compile Include="Vista\AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vista\Autores\FrmConsultarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Autores\FrmConsultarAutor.Designer.cs">
+      <DependentUpon>FrmConsultarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Autores\FrmEliminarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Autores\FrmEliminarAutor.Designer.cs">
+      <DependentUpon>FrmEliminarAutor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Autores\FrmInsertarAutor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vista\Autores\FrmInsertarAutor.Designer.cs">
       <DependentUpon>FrmInsertarAutor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Autores\FrmModificarAutor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Autores\FrmModificarAutor.Designer.cs">
+      <DependentUpon>FrmModificarAutor.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\Caracteristicas\FrmConsultarCaracteristica.cs">
       <SubType>Form</SubType>
@@ -153,11 +171,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vista\Genero\FrmConsultarGeneroEdad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Genero\FrmConsultarGeneroEdad.Designer.cs">
+      <DependentUpon>FrmConsultarGeneroEdad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Genero\FrmEliminarGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Genero\FrmEliminarGenero.Designer.cs">
+      <DependentUpon>FrmEliminarGenero.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vista\Genero\FrmInsertarGener.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vista\Genero\FrmInsertarGener.Designer.cs">
       <DependentUpon>FrmInsertarGener.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Genero\FrmModificarGenero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Genero\FrmModificarGenero.Designer.cs">
+      <DependentUpon>FrmModificarGenero.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\Lanas\FrmBorrarLana.cs">
       <SubType>Form</SubType>
@@ -258,8 +294,17 @@
     <EmbeddedResource Include="Vista\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Autores\FrmConsultarAutor.resx">
+      <DependentUpon>FrmConsultarAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Autores\FrmEliminarAutor.resx">
+      <DependentUpon>FrmEliminarAutor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\Autores\FrmInsertarAutor.resx">
       <DependentUpon>FrmInsertarAutor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Autores\FrmModificarAutor.resx">
+      <DependentUpon>FrmModificarAutor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Caracteristicas\FrmConsultarCaracteristica.resx">
       <DependentUpon>FrmConsultarCaracteristica.cs</DependentUpon>
@@ -286,8 +331,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Vista\Genero\FrmConsultarGeneroEdad.resx">
+      <DependentUpon>FrmConsultarGeneroEdad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Genero\FrmEliminarGenero.resx">
+      <DependentUpon>FrmEliminarGenero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vista\Genero\FrmInsertarGener.resx">
       <DependentUpon>FrmInsertarGener.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Genero\FrmModificarGenero.resx">
+      <DependentUpon>FrmModificarGenero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Lanas\FrmBorrarLana.resx">
       <DependentUpon>FrmBorrarLana.cs</DependentUpon>
