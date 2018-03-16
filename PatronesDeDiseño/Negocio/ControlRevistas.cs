@@ -44,12 +44,12 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<Revistas> fichero;
+        
        // public static 
         public static DataTable ficheroRevistas;
         public static ArrayList intermedio = new ArrayList();
-
-
+        private static PatronesEntities contexto = new PatronesEntities();
+        public static List<Revistas> fichero;
         #endregion
 
 
@@ -79,13 +79,11 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     if (ConsPrenda == string.Empty)
                     {
-                        var query_where = (from a in contexto.Revistas
-                                           select a).Distinct().ToList();
-                        fichero = query_where;
+
+                        fichero = contexto.Revistas.ToList();
 
                         foreach (var item in fichero)
                         {
@@ -101,12 +99,8 @@ namespace PatronesDeDiseño.Negocio
                     else
                     {
 
-                        var query_where1 = (from a in contexto.Revistas
-                                            where a.NombreRevista.Contains(ConsPrenda.Trim())
-                                            select a).Distinct().ToList();
-                        fichero = query_where1;
-                        if (fichero.Count > 0)
-                        {
+                        fichero = contexto.Revistas.ToList();
+                    
                             foreach (var item in fichero)
                             {
                                 List<string> VistaRevistas = new List<string>();
@@ -116,7 +110,7 @@ namespace PatronesDeDiseño.Negocio
                                 VistaRevistas.Add(b);
                                 intermedio.Add(VistaRevistas);
                             }
-                        }
+                        
 
                     }
                     if (intermedio.Count > 0)
@@ -130,7 +124,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -151,8 +145,7 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Revistas { IdRevistas = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                
                     contexto.Revistas.Attach(cliente);
                     cliente.NombreRevista = RevistaModificada;
                     cliente.Autor = autorModificado;
@@ -160,7 +153,7 @@ namespace PatronesDeDiseño.Negocio
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
 
             }
             catch (Exception ex)
@@ -176,33 +169,24 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
-                   
-                     var query_where1 = (from a in contexto.Revistas
-                         where a.NombreRevista.Contains(ConsPrenda.Trim())
-                         select a).Distinct().ToList();
-                        fichero = query_where1;
-                        if (fichero.Count > 0)
-                        {
-                            foreach (var item in fichero)
-                            {
-                            if (item.NombreRevista != null && item.NombreRevista.ToLower() == ConsPrenda.Trim().ToLower())
-                                { 
-                                    List<string> VistaRevistas = new List<string>();
-                                    RevistasViewModel.IdRevista = item.IdRevistas;
-                                    string a = item.NombreRevista.ToString();
-                                    string b = item.Autor.ToString();
-                                    VistaRevistas.Add(a);
-                                    VistaRevistas.Add(b);
-                                    intermedio.Add(VistaRevistas);
-                                    cSuccessful = true;
-                                    cResultException = "";
-                                }
-                            }
+                fichero = contexto.Revistas.ToList();
+                    foreach (var item in fichero)
+                    {
+                        if (item.NombreRevista != null && item.NombreRevista.ToLower() == ConsPrenda.Trim().ToLower())
+                        { 
+                            List<string> VistaRevistas = new List<string>();
+                            RevistasViewModel.IdRevista = item.IdRevistas;
+                            string a = item.NombreRevista.ToString();
+                            string b = item.Autor.ToString();
+                            VistaRevistas.Add(a);
+                            VistaRevistas.Add(b);
+                            intermedio.Add(VistaRevistas);
+                            cSuccessful = true;
+                            cResultException = "";
                         }
+                    }
+                        
 
-                    
                     if (intermedio.Count > 0)
                     {
                         ficheroRevistas = LlenarResultado(intermedio);
@@ -214,7 +198,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -235,14 +219,13 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Revistas { IdRevistas = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                
                     contexto.Revistas.Attach(cliente);
                     contexto.Revistas.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
             }
             catch (Exception ex)
             {

@@ -46,11 +46,12 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<Lanas> ListaficheroLanas;
+        
       //  public static List<string> VistaModeloLanas = new List<string>();
         public static DataTable ficherolana;
         public static ArrayList intermedio = new ArrayList();
-
+        private static PatronesEntities contexto = new PatronesEntities();
+        public static List<Lanas> ListaficheroLanas;
 
 
         #endregion
@@ -92,37 +93,28 @@ namespace PatronesDeDiseño.Negocio
             
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+              
                     if (grosorLana == string.Empty)
                     {
-                        var query_where = (from a in contexto.Lanas
-                                          select a).Distinct().ToList();
-                        ListaficheroLanas = query_where;
-                        if (ListaficheroLanas.Count > 0)
-                        { 
-                            foreach (var item in ListaficheroLanas)
-                            {
+                       ListaficheroLanas = contexto.Lanas.ToList();
+                   
+                        foreach (var item in ListaficheroLanas)
+                        {
 
-                                List<string> VistaLana = new List<string>();
-                                string a = item.NombreLana.ToString();
-                                VistaLana.Add(a);
-                                intermedio.Add(VistaLana);
-                                cSuccessful = true;
-                                cResultException = "";
+                            List<string> VistaLana = new List<string>();
+                            string a = item.NombreLana.ToString();
+                            VistaLana.Add(a);
+                            intermedio.Add(VistaLana);
+                            cSuccessful = true;
+                            cResultException = "";
 
-                            }
                         }
+                        
                     }
                     else
                     {
-                             
-                        var query_where1 = (from a in contexto.Lanas
-                                           where a.NombreLana.Contains(grosorLana.Trim())
-                                           select a).Distinct().ToList();
-                        ListaficheroLanas = query_where1;
-                        if (ListaficheroLanas.Count > 0)
-                        {
+                            ListaficheroLanas = contexto.Lanas.ToList();
+                       
                             foreach (var item in ListaficheroLanas)
                             {
                                 List<string> VistaLana = new List<string>();
@@ -133,7 +125,7 @@ namespace PatronesDeDiseño.Negocio
                                 cResultException = "";
 
                             }
-                        }
+                        
                     }
 
                      if (intermedio.Count > 0)
@@ -148,7 +140,7 @@ namespace PatronesDeDiseño.Negocio
                         cSuccessful = false;
                      }
                      
-                }
+                
                
             }
             catch (Exception ex)
@@ -173,30 +165,22 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
+               ListaficheroLanas = contexto.Lanas.ToList();
+                   
+                foreach (var item in ListaficheroLanas)
                 {
-                    var query_where1 = (from a in contexto.Lanas
-                                       where a.NombreLana.ToLower() == grosorLana.Trim().ToLower()
-                                       select a).Distinct().ToList();
-
-                    ListaficheroLanas = query_where1;
-                    if (ListaficheroLanas.Count > 0)
+                    if (item.NombreLana != null && item.NombreLana.ToLower() == grosorLana.Trim().ToLower())
                     {
-                        foreach (var item in ListaficheroLanas)
-                        {
-                            if (item.NombreLana != null && item.NombreLana.ToLower() == grosorLana.Trim().ToLower())
-                            {
-                                List<string> VistaLana = new List<string>();
-                                LanasViewModel.IndiceBuscaLanas = item.IdLana;
-                                string a = item.NombreLana.ToString();
-                                VistaLana.Add(a);
-                                intermedio.Add(VistaLana);
-                                cSuccessful = true;
-                                cResultException = "";
-                            }
-                        }
+                        List<string> VistaLana = new List<string>();
+                        LanasViewModel.IndiceBuscaLanas = item.IdLana;
+                        string a = item.NombreLana.ToString();
+                        VistaLana.Add(a);
+                        intermedio.Add(VistaLana);
+                        cSuccessful = true;
+                        cResultException = "";
                     }
-
+                }
+                    
 
                     if (intermedio.Count > 0)
                     {
@@ -209,7 +193,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -237,15 +221,14 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Lanas { IdLana = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.Lanas.Attach(cliente);
                     cliente.NombreLana = grosorModificado;
                     contexto.Configuration.ValidateOnSaveEnabled = false;
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
      
             }
             catch (Exception ex)
@@ -265,14 +248,13 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new Lanas { IdLana = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.Lanas.Attach(cliente);
                     contexto.Lanas.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
             }
             catch (Exception ex)
             {

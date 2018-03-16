@@ -44,11 +44,12 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<TiposCaracteristicas> fichero;
+        
         //public static List<string> VistaModeloCaract = new List<string>();
         public static DataTable ficheroCaract;
         public static ArrayList intermedio = new ArrayList();
-
+        private static PatronesEntities contexto = new PatronesEntities();
+        public static List<TiposCaracteristicas> fichero; 
         #endregion
 
         #region "3.- Metodos Publicos de la clase
@@ -84,16 +85,16 @@ namespace PatronesDeDiseño.Negocio
         /// <returns></returns>
         public static DataTable ConsultarCaracteristica(string ConsCaract)
         {
-
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                //using (PatronesEntities contexto = new PatronesEntities())
+                //{
                     if (ConsCaract == string.Empty)
                     {
-                        var query_where = (from a in contexto.TiposCaracteristicas
-                                           select a).Distinct().ToList();
-                        fichero = query_where;
+                        fichero = contexto.TiposCaracteristicas.ToList();
+                        //var query_where = (from a in contexto.TiposCaracteristicas
+                        //                   select a).Distinct().ToList();
+                        //fichero = query_where;
 
                         foreach (var item in fichero)
                         {
@@ -109,22 +110,26 @@ namespace PatronesDeDiseño.Negocio
                     else
                     {
 
-                        var query_where1 = (from a in contexto.TiposCaracteristicas
-                                            where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
-                                            select a).Distinct().ToList();
-                        fichero = query_where1;
-                        if (fichero.Count > 0)
-                        {
+                        //  a = contexto.TiposCaracteristicas.Contains(TCaractViewModel.NombreTCarac.Trim()).Distinct().ToList());
+                        //var query_where1 = (from a in contexto.TiposCaracteristicas
+                        //                    where a.NombreCaracteristicas.Contains(ConsCaract.Trim())
+                        //                    select a).Distinct().ToList();
+                        //fichero = query_where1;
+                        fichero = contexto.TiposCaracteristicas.ToList();
+                        
                             foreach (var item in fichero)
                             {
                                 List<string> VistaModeloCaract = new List<string>();
                                 string a = item.NombreCaracteristicas.ToString();
-                                VistaModeloCaract.Add(a);
-                                intermedio.Add(VistaModeloCaract);
-                                cSuccessful = true;
-                                cResultException = "";
+                                if (a.Contains(ConsCaract))
+                                { 
+                                    VistaModeloCaract.Add(a);
+                                    intermedio.Add(VistaModeloCaract);
+                                    cSuccessful = true;
+                                    cResultException = "";
+                                }
                             }
-                        }
+                        
                     }
                     if (intermedio.Count > 0)
                     {
@@ -138,8 +143,6 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la Característica";
                         cSuccessful = false;
                     }
-
-                }
 
             }
             catch (Exception ex)
@@ -164,29 +167,23 @@ namespace PatronesDeDiseño.Negocio
         {
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
+                fichero = contexto.TiposCaracteristicas.ToList();
+                  
+                foreach (var item in fichero)
                 {
-                    var query_where1 = (from a in contexto.TiposCaracteristicas
-                                       where a.NombreCaracteristicas.Contains(ConsCaract.Trim().ToLower())
-                                       select a).Distinct().ToList();
-                    fichero = query_where1;
-                    if (fichero.Count > 0)
-                    {
-                        foreach (var item in fichero)
-                        {
 
-                            if (item.NombreCaracteristicas != null && item.NombreCaracteristicas.ToLower() == ConsCaract.Trim().ToLower())
-                            {
-                                List<string> VistaCaract = new List<string>();
-                                TCaractViewModel.IdTipCar = item.IdTiposCaract;
-                                string a = item.NombreCaracteristicas.ToString();
-                                VistaCaract.Add(a);
-                                intermedio.Add(VistaCaract);
-                                cSuccessful = true;
-                                cResultException = "";
-                            }
-                        }
+                    if (item.NombreCaracteristicas != null && item.NombreCaracteristicas.ToLower() == ConsCaract.Trim().ToLower())
+                    {
+                        List<string> VistaCaract = new List<string>();
+                        TCaractViewModel.IdTipCar = item.IdTiposCaract;
+                        string a = item.NombreCaracteristicas.ToString();
+                        VistaCaract.Add(a);
+                        intermedio.Add(VistaCaract);
+                        cSuccessful = true;
+                        cResultException = "";
                     }
+                }
+                   
                     if (intermedio.Count > 0)
                     {
                         ficheroCaract = LlenarResultado(intermedio);
@@ -199,7 +196,7 @@ namespace PatronesDeDiseño.Negocio
                         cSuccessful = false;
                     }
 
-                }
+               // }
             }
             catch (Exception ex)
             {
@@ -223,16 +220,14 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new TiposCaracteristicas { IdTiposCaract = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.TiposCaracteristicas.Attach(cliente);
                     cliente.NombreCaracteristicas = CaractModificada;
                     contexto.Configuration.ValidateOnSaveEnabled = false;
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
-
+              
             }
             catch (Exception ex)
             {
@@ -251,14 +246,13 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new TiposCaracteristicas { IdTiposCaract = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.TiposCaracteristicas.Attach(cliente);
                     contexto.TiposCaracteristicas.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
             }
             catch (Exception ex)
             {

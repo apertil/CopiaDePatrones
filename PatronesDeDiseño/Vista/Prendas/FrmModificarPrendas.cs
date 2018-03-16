@@ -27,36 +27,41 @@ namespace PatronesDeDiseño.Vista.Prendas
 
         private void btnBuscarTipoPrenda_Click(object sender, EventArgs e)
         {
-            ControlTipoDeprendas.BuscarExactoPrenda(txtBuscarTipoPrenda.Text.TrimStart().TrimEnd());
+            DataTable table = ControlTipoDeprendas.BuscarExactoPrenda(txtBuscarTipoPrenda.Text.TrimStart().TrimEnd());
             if (ControlTipoDeprendas.Result)
             {
+                dataGridModifTipPrenda.AutoGenerateColumns = true;
+                dataGridModifTipPrenda.DataSource = table;
                 btnModificaTipoPrenda.Enabled = true;
             }
             else
             {
                 MessageBox.Show(txtBuscarTipoPrenda.Text + Consts.ErrorTipoPrenda, "No se ha encontrado", MessageBoxButtons.OK);
                 txtBuscarTipoPrenda.Text = " ";
-                txtModificaTipoPrenda.Text = " ";
+                
             }
         }
 
         private void btnModificaTipoPrenda_Click(object sender, EventArgs e)
         {
-            ControlTipoDeprendas.ModificarPrenda(PrendasViewModel.IdPren, txtModificaTipoPrenda.Text.TrimStart().TrimEnd());
+            foreach (DataGridViewRow row in dataGridModifTipPrenda.Rows)
+            {
+                PrendasViewModel.NombrePren = row.Cells[0].EditedFormattedValue.ToString();
+                ControlTipoDeprendas.ModificarPrenda(PrendasViewModel.IdPren, PrendasViewModel.NombrePren.TrimStart().TrimEnd());
+            }
+            
             if (ControlTipoDeprendas.Result)
             {
-                MessageBox.Show(txtModificaTipoPrenda.Text + Consts.ModificaPrenda, "Modificacion Correcta", MessageBoxButtons.OK);
-                txtBuscarTipoPrenda.Text = " ";
-                txtModificaTipoPrenda.Text = " ";
+                MessageBox.Show(PrendasViewModel.NombrePren + Consts.ModificaPrenda, "Modificacion Correcta", MessageBoxButtons.OK);
+                dataGridModifTipPrenda.DataSource = null;
                 btnModificaTipoPrenda.Enabled = false;
 
             }
             else
             {
-                MessageBox.Show(txtModificaTipoPrenda.Text + Consts.ModificaErrorPrenda, "Modificacion NO Correcta", MessageBoxButtons.OK);
-                txtBuscarTipoPrenda.Text = " ";
-                txtModificaTipoPrenda.Text = " ";
-                // btnModificaTipoTejer.Enabled = false;
+                MessageBox.Show(PrendasViewModel.NombrePren + Consts.ModificaErrorPrenda, "Modificacion NO Correcta", MessageBoxButtons.OK);
+
+                btnModificaTipoPrenda.Enabled = false;
 
             }
         }

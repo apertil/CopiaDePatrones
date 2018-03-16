@@ -33,12 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtBuscarTipoTejer = new System.Windows.Forms.TextBox();
             this.btnBuscarTipo = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtModificaTipoTejer = new System.Windows.Forms.TextBox();
             this.btnModificaTipoTejer = new System.Windows.Forms.Button();
             this.btnSalirModificarLana = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridModifTipPunto = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridModifTipPunto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,15 +66,15 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 152);
+            this.label2.Location = new System.Drawing.Point(68, 155);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(170, 16);
+            this.label2.Size = new System.Drawing.Size(146, 16);
             this.label2.TabIndex = 16;
-            this.label2.Text = "Nombre del tejido a buscar";
+            this.label2.Text = "Tipo de punto a buscar";
             // 
             // txtBuscarTipoTejer
             // 
-            this.txtBuscarTipoTejer.Location = new System.Drawing.Point(234, 151);
+            this.txtBuscarTipoTejer.Location = new System.Drawing.Point(292, 151);
             this.txtBuscarTipoTejer.Name = "txtBuscarTipoTejer";
             this.txtBuscarTipoTejer.Size = new System.Drawing.Size(138, 20);
             this.txtBuscarTipoTejer.TabIndex = 17;
@@ -84,31 +84,14 @@
             this.btnBuscarTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarTipo.Image = global::PatronesDeDiseño.Properties.Resources.find;
             this.btnBuscarTipo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarTipo.Location = new System.Drawing.Point(415, 143);
+            this.btnBuscarTipo.Location = new System.Drawing.Point(360, 197);
             this.btnBuscarTipo.Name = "btnBuscarTipo";
-            this.btnBuscarTipo.Size = new System.Drawing.Size(196, 34);
+            this.btnBuscarTipo.Size = new System.Drawing.Size(181, 34);
             this.btnBuscarTipo.TabIndex = 18;
-            this.btnBuscarTipo.Text = "Buscar Tipo de Tejido";
+            this.btnBuscarTipo.Text = "Buscar Tipo de punto";
             this.btnBuscarTipo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscarTipo.UseVisualStyleBackColor = true;
             this.btnBuscarTipo.Click += new System.EventHandler(this.btnBuscarTipo_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(32, 201);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 16);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Modificar el nombre";
-            // 
-            // txtModificaTipoTejer
-            // 
-            this.txtModificaTipoTejer.Location = new System.Drawing.Point(234, 197);
-            this.txtModificaTipoTejer.Name = "txtModificaTipoTejer";
-            this.txtModificaTipoTejer.Size = new System.Drawing.Size(138, 20);
-            this.txtModificaTipoTejer.TabIndex = 20;
             // 
             // btnModificaTipoTejer
             // 
@@ -116,11 +99,11 @@
             this.btnModificaTipoTejer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificaTipoTejer.Image = global::PatronesDeDiseño.Properties.Resources.config1;
             this.btnModificaTipoTejer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnModificaTipoTejer.Location = new System.Drawing.Point(414, 192);
+            this.btnModificaTipoTejer.Location = new System.Drawing.Point(360, 274);
             this.btnModificaTipoTejer.Name = "btnModificaTipoTejer";
-            this.btnModificaTipoTejer.Size = new System.Drawing.Size(197, 35);
+            this.btnModificaTipoTejer.Size = new System.Drawing.Size(181, 35);
             this.btnModificaTipoTejer.TabIndex = 21;
-            this.btnModificaTipoTejer.Text = "Modificar Tipo de Tejido";
+            this.btnModificaTipoTejer.Text = "Modificar Tipo de punto";
             this.btnModificaTipoTejer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnModificaTipoTejer.UseVisualStyleBackColor = true;
             this.btnModificaTipoTejer.Click += new System.EventHandler(this.btnModificaTipoTejer_Click);
@@ -130,7 +113,7 @@
             this.btnSalirModificarLana.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalirModificarLana.Image = global::PatronesDeDiseño.Properties.Resources.exit;
             this.btnSalirModificarLana.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirModificarLana.Location = new System.Drawing.Point(247, 236);
+            this.btnSalirModificarLana.Location = new System.Drawing.Point(234, 369);
             this.btnSalirModificarLana.Name = "btnSalirModificarLana";
             this.btnSalirModificarLana.Size = new System.Drawing.Size(88, 42);
             this.btnSalirModificarLana.TabIndex = 22;
@@ -143,32 +126,44 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(231, 19);
+            this.label4.Location = new System.Drawing.Point(194, 21);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 16);
+            this.label4.Size = new System.Drawing.Size(173, 16);
             this.label4.TabIndex = 23;
-            this.label4.Text = "Buscar Tipo de Tejido";
+            this.label4.Text = "Modificar Tipo de Punto";
+            // 
+            // dataGridModifTipPunto
+            // 
+            this.dataGridModifTipPunto.AllowUserToAddRows = false;
+            this.dataGridModifTipPunto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridModifTipPunto.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridModifTipPunto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridModifTipPunto.Location = new System.Drawing.Point(71, 197);
+            this.dataGridModifTipPunto.Name = "dataGridModifTipPunto";
+            this.dataGridModifTipPunto.Size = new System.Drawing.Size(269, 150);
+            this.dataGridModifTipPunto.TabIndex = 47;
             // 
             // FrmModificarTiposPunto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(652, 294);
+            this.ClientSize = new System.Drawing.Size(559, 423);
+            this.Controls.Add(this.dataGridModifTipPunto);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSalirModificarLana);
             this.Controls.Add(this.btnModificaTipoTejer);
-            this.Controls.Add(this.txtModificaTipoTejer);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBuscarTipo);
             this.Controls.Add(this.txtBuscarTipoTejer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmModificarTiposPunto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmModificarTiposPunto";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridModifTipPunto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,10 +176,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtBuscarTipoTejer;
         private System.Windows.Forms.Button btnBuscarTipo;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtModificaTipoTejer;
         private System.Windows.Forms.Button btnModificaTipoTejer;
         private System.Windows.Forms.Button btnSalirModificarLana;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridModifTipPunto;
     }
 }

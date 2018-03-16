@@ -44,10 +44,12 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<GeneroEdad> ficheroGeneroEdad;
+        
         // public static 
         public static DataTable ficheroGenEd;
         public static ArrayList intermedio = new ArrayList();
+        private static PatronesEntities contexto = new PatronesEntities();
+        public static List<GeneroEdad> ficheroGeneroEdad;
 
 
         #endregion
@@ -78,18 +80,14 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
                     if (Ngenero == string.Empty)
                     {
-                        var query_where = (from a in contexto.GeneroEdad
-                                           select a).Distinct().ToList();
-                        ficheroGeneroEdad = query_where;
+
+                        ficheroGeneroEdad = contexto.GeneroEdad.ToList();
 
                         foreach (var item in ficheroGeneroEdad)
                         {
                             List<string> VistaGenEdad = new List<string>();
-
                             string a = item.GenEdad.ToString();
                             VistaGenEdad.Add(a);
                             intermedio.Add(VistaGenEdad);
@@ -99,12 +97,8 @@ namespace PatronesDeDiseño.Negocio
                     else
                     {
 
-                        var query_where1 = (from a in contexto.GeneroEdad
-                                            where a.GenEdad.Contains(Ngenero.Trim())
-                                            select a).Distinct().ToList();
-                        ficheroGeneroEdad = query_where1;
-                        if (ficheroGeneroEdad.Count > 0)
-                        {
+                         ficheroGeneroEdad = contexto.GeneroEdad.ToList();
+
                             foreach (var item in ficheroGeneroEdad)
                             {
                                 List<string> VistaGenEdad = new List<string>();
@@ -112,7 +106,7 @@ namespace PatronesDeDiseño.Negocio
                                 VistaGenEdad.Add(a);
                                 intermedio.Add(VistaGenEdad);
                             }
-                        }
+                        
 
                     }
                     if (intermedio.Count > 0)
@@ -126,7 +120,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -150,12 +144,8 @@ namespace PatronesDeDiseño.Negocio
                 using (PatronesEntities contexto = new PatronesEntities())
                 {
 
-                    var query_where1 = (from a in contexto.GeneroEdad
-                                        where a.GenEdad.Contains(Ngenero.Trim())
-                                        select a).Distinct().ToList();
-                    ficheroGeneroEdad = query_where1;
-                    if (ficheroGeneroEdad.Count > 0)
-                    {
+                    ficheroGeneroEdad = contexto.GeneroEdad.ToList();
+                    
                         foreach (var item in ficheroGeneroEdad)
                         {
                             if (item.GenEdad != null && item.GenEdad.ToLower() == Ngenero.Trim().ToLower())
@@ -169,9 +159,7 @@ namespace PatronesDeDiseño.Negocio
                                 cResultException = "";
                             }
                         }
-                    }
-
-
+                 
                     if (intermedio.Count > 0)
                     {
                         ficheroGenEd = LlenarResultado(intermedio);
@@ -205,15 +193,14 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new GeneroEdad { IdGenEd = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                
                     contexto.GeneroEdad.Attach(cliente);
                     cliente.GenEdad = autorModificado;
                     contexto.Configuration.ValidateOnSaveEnabled = false;
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
 
             }
             catch (Exception ex)
@@ -229,14 +216,13 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new GeneroEdad { IdGenEd = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.GeneroEdad.Attach(cliente);
                     contexto.GeneroEdad.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
             }
             catch (Exception ex)
             {

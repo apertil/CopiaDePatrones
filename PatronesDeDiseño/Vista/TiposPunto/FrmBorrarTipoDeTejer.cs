@@ -22,9 +22,11 @@ namespace PatronesDeDiseño.Vista.TiposPunto
 
         private void btnBuscarBorrarTipo_Click(object sender, EventArgs e)
         {
-            ControlTipDeTejer.BuscarExactoTipoDetejer(txtBorrarTipoTejido.Text.TrimStart().TrimEnd());
+            DataTable table = ControlTipDeTejer.BuscarExactoTipoDetejer(txtBorrarTipoTejido.Text.TrimStart().TrimEnd());
             if (ControlTipDeTejer.Result)
             {
+                dataGridBorrtejido.AutoGenerateColumns = true;
+                dataGridBorrtejido.DataSource = table;
                 btnBorraTipo.Enabled = true;
             }
             else
@@ -36,16 +38,28 @@ namespace PatronesDeDiseño.Vista.TiposPunto
 
         private void btnBorraTipo_Click(object sender, EventArgs e)
         {
-            ControlTipDeTejer.EliminarTipoDetejer(TipDeTejerViewModel.IdTipoDeTejer);
-            if (ControlTipDeTejer.Result)
+            DialogResult result = MessageBox.Show("Estás segura de que quieres borrar la característica?", "Confirmation", MessageBoxButtons.YesNoCancel);
+
+            if (result == DialogResult.Yes)
             {
-                btnBorraTipo.Enabled = false;
-                MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoTptejer, "Borrado Correcto", MessageBoxButtons.OK);
+                ControlTipDeTejer.EliminarTipoDetejer(TipDeTejerViewModel.IdTipoDeTejer);
+                if (ControlTipDeTejer.Result)
+                {
+                    btnBorraTipo.Enabled = false;
+                    MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoTptejer, "Borrado Correcto", MessageBoxButtons.OK);
+                    dataGridBorrtejido.DataSource = null;
+                }
+                else
+                {
+                    btnBorraTipo.Enabled = false;
+                    MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoErrorTptejer, "Borrado No Correcto", MessageBoxButtons.OK);
+                    dataGridBorrtejido.DataSource = null;
+                }
             }
             else
             {
                 btnBorraTipo.Enabled = false;
-                MessageBox.Show(txtBorrarTipoTejido.Text + Consts.BorradoErrorTptejer, "Borrado No Correcto", MessageBoxButtons.OK);
+                dataGridBorrtejido.DataSource = null;
             }
         }
 

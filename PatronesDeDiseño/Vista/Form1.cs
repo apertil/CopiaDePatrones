@@ -153,7 +153,8 @@ namespace PatronesDeDiseño.Vista
         /// <param name="e"></param>
         private void borrarTipoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmBorrarTipoDeTejer btdtejer = new FrmBorrarTipoDeTejer();
+            btdtejer.Show();
         }
 
 

@@ -44,12 +44,12 @@ namespace PatronesDeDiseño.Negocio
 
             get { return cSuccessful; }
         }
-        public static List<AutorPatron> ficheroAutPatron;
+       
         // public static 
         public static DataTable ficheroAutores;
         public static ArrayList intermedio = new ArrayList();
-
-
+        private static PatronesEntities contexto = new PatronesEntities();
+        public static List<AutorPatron> ficheroAutPatron;
         #endregion
         public static void InsertarAutor(string Nautor)
         {
@@ -78,14 +78,16 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                
+                   // List<AutorPatron> Lista = new List<AutorPatron>();
                     if (ConsAutor == string.Empty)
                     {
-                        var query_where = (from a in contexto.AutorPatron
-                                           select a).Distinct().ToList();
-                        ficheroAutPatron = query_where;
 
+                        ficheroAutPatron = contexto.AutorPatron.ToList();
+
+                        //var query_where = (from a in contexto.AutorPatron
+                        //                   select a).Distinct().ToList();
+                      
                         foreach (var item in ficheroAutPatron)
                         {
                             List<string> VistaAutor = new List<string>();
@@ -99,12 +101,8 @@ namespace PatronesDeDiseño.Negocio
                     else
                     {
 
-                        var query_where1 = (from a in contexto.AutorPatron
-                                            where a.NombreAutor.Contains(ConsAutor.Trim())
-                                            select a).Distinct().ToList();
-                        ficheroAutPatron = query_where1;
-                        if (ficheroAutPatron.Count > 0)
-                        {
+                        ficheroAutPatron = contexto.AutorPatron.ToList();
+                   
                             foreach (var item in ficheroAutPatron)
                             {
                                 List<string> VistaAutor = new List<string>();
@@ -112,7 +110,7 @@ namespace PatronesDeDiseño.Negocio
                                 VistaAutor.Add(a);
                                 intermedio.Add(VistaAutor);
                             }
-                        }
+                        
 
                     }
                     if (intermedio.Count > 0)
@@ -126,7 +124,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -147,15 +145,7 @@ namespace PatronesDeDiseño.Negocio
 
             try
             {
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
-
-                    var query_where1 = (from a in contexto.AutorPatron
-                                        where a.NombreAutor.Contains(ConsAutor.Trim())
-                                        select a).Distinct().ToList();
-                    ficheroAutPatron = query_where1;
-                    if (ficheroAutPatron.Count > 0)
-                    {
+                 ficheroAutPatron = contexto.AutorPatron.ToList();
                         foreach (var item in ficheroAutPatron)
                         {
                             if (item.NombreAutor != null && item.NombreAutor.ToLower() == ConsAutor.Trim().ToLower())
@@ -169,9 +159,7 @@ namespace PatronesDeDiseño.Negocio
                                 cResultException = "";
                             }
                         }
-                    }
-
-
+              
                     if (intermedio.Count > 0)
                     {
                         ficheroAutores = LlenarResultado(intermedio);
@@ -183,7 +171,7 @@ namespace PatronesDeDiseño.Negocio
                         cResultException = "No se ha encontrado la revista";
                         cSuccessful = false;
                     }
-                }
+                
 
             }
             catch (Exception ex)
@@ -205,16 +193,14 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new AutorPatron { IdAutorPatron = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+               
                     contexto.AutorPatron.Attach(cliente);
                     cliente.NombreAutor = autorModificado;
                     contexto.Configuration.ValidateOnSaveEnabled = false;
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
-
+            
             }
             catch (Exception ex)
             {
@@ -229,14 +215,13 @@ namespace PatronesDeDiseño.Negocio
             try
             {
                 var cliente = new AutorPatron { IdAutorPatron = idregistro };
-                using (PatronesEntities contexto = new PatronesEntities())
-                {
+                
                     contexto.AutorPatron.Attach(cliente);
                     contexto.AutorPatron.Remove(cliente);
                     contexto.SaveChanges();
                     cResultException = null;
                     cSuccessful = true;
-                }
+                
             }
             catch (Exception ex)
             {

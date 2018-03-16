@@ -27,10 +27,12 @@ namespace PatronesDeDiseño.Vista.TiposPunto
 
         private void btnBuscarTipo_Click(object sender, EventArgs e)
         {
-            ControlTipDeTejer.BuscarExactoTipoDetejer(txtBuscarTipoTejer.Text.TrimStart().TrimEnd());
+            DataTable table = ControlTipDeTejer.BuscarExactoTipoDetejer(txtBuscarTipoTejer.Text.TrimStart().TrimEnd());
 
             if (ControlTipDeTejer.Result)
             {
+                dataGridModifTipPunto.AutoGenerateColumns = true;
+                dataGridModifTipPunto.DataSource = table;
                 btnModificaTipoTejer.Enabled = true;
             }
 
@@ -38,29 +40,35 @@ namespace PatronesDeDiseño.Vista.TiposPunto
             {
                 MessageBox.Show(txtBuscarTipoTejer.Text + Consts.ErrorTipoPunto, "No se ha encontrado", MessageBoxButtons.OK);
                 txtBuscarTipoTejer.Text = " ";
-                txtModificaTipoTejer.Text = " ";
+                
                 
             }
         }
 
         private void btnModificaTipoTejer_Click(object sender, EventArgs e)
         {
-            ControlTipDeTejer.ModificarTiposDeTejer(TipDeTejerViewModel.IdTipoDeTejer, txtModificaTipoTejer.Text.TrimStart().TrimEnd());
+
+            foreach (DataGridViewRow row in dataGridModifTipPunto.Rows)
+            {
+                TipDeTejerViewModel.NombreTipoDeTejer = row.Cells[0].EditedFormattedValue.ToString();
+                ControlTipDeTejer.ModificarTiposDeTejer(TipDeTejerViewModel.IdTipoDeTejer, TipDeTejerViewModel.NombreTipoDeTejer.TrimStart().TrimEnd());
+            }
+            
             if (ControlTipDeTejer.Result)
             {
-                MessageBox.Show(txtModificaTipoTejer.Text + Consts.ModificaTptejer, "Modificacion Correcta", MessageBoxButtons.OK);
+                MessageBox.Show(TipDeTejerViewModel.NombreTipoDeTejer + Consts.ModificaTptejer, "Modificacion Correcta", MessageBoxButtons.OK);
                 txtBuscarTipoTejer.Text = " ";
-                txtModificaTipoTejer.Text = " ";
+                dataGridModifTipPunto.DataSource = null;
                 btnModificaTipoTejer.Enabled = false;
                
             }
             else
             {
-                MessageBox.Show(txtModificaTipoTejer.Text + Consts.ModificaErrorTptejer, "Modificacion NO Correcta", MessageBoxButtons.OK);
+                MessageBox.Show(TipDeTejerViewModel.NombreTipoDeTejer + Consts.ModificaErrorTptejer, "Modificacion NO Correcta", MessageBoxButtons.OK);
                 txtBuscarTipoTejer.Text = " ";
-                txtModificaTipoTejer.Text = " ";
+                btnModificaTipoTejer.Enabled = false;
                 // btnModificaTipoTejer.Enabled = false;
-              
+
             }
         }
     }

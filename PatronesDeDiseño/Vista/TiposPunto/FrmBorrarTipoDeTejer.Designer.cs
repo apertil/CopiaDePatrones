@@ -36,14 +36,16 @@
             this.btnBuscarBorrarTipo = new System.Windows.Forms.Button();
             this.btnBorraTipo = new System.Windows.Forms.Button();
             this.btnSalirBorrarrTipo = new System.Windows.Forms.Button();
+            this.dataGridBorrtejido = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBorrtejido)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(192, 22);
+            this.label1.Location = new System.Drawing.Point(192, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(152, 16);
             this.label1.TabIndex = 17;
@@ -53,7 +55,7 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(39, 66);
+            this.panel1.Location = new System.Drawing.Point(46, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(441, 84);
             this.panel1.TabIndex = 18;
@@ -75,16 +77,16 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 177);
+            this.label2.Location = new System.Drawing.Point(54, 153);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(149, 16);
+            this.label2.Size = new System.Drawing.Size(97, 16);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Nombre Tipo de Tejido";
+            this.label2.Text = "Tipo de Tejido";
             // 
             // txtBorrarTipoTejido
             // 
             this.txtBorrarTipoTejido.BackColor = System.Drawing.Color.White;
-            this.txtBorrarTipoTejido.Location = new System.Drawing.Point(174, 177);
+            this.txtBorrarTipoTejido.Location = new System.Drawing.Point(174, 152);
             this.txtBorrarTipoTejido.Name = "txtBorrarTipoTejido";
             this.txtBorrarTipoTejido.Size = new System.Drawing.Size(170, 20);
             this.txtBorrarTipoTejido.TabIndex = 20;
@@ -95,7 +97,7 @@
             this.btnBuscarBorrarTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarBorrarTipo.Image = global::PatronesDeDiseño.Properties.Resources.find;
             this.btnBuscarBorrarTipo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarBorrarTipo.Location = new System.Drawing.Point(386, 167);
+            this.btnBuscarBorrarTipo.Location = new System.Drawing.Point(386, 210);
             this.btnBuscarBorrarTipo.Name = "btnBuscarBorrarTipo";
             this.btnBuscarBorrarTipo.Size = new System.Drawing.Size(122, 34);
             this.btnBuscarBorrarTipo.TabIndex = 21;
@@ -110,7 +112,7 @@
             this.btnBorraTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBorraTipo.Image = global::PatronesDeDiseño.Properties.Resources.config1;
             this.btnBorraTipo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBorraTipo.Location = new System.Drawing.Point(104, 231);
+            this.btnBorraTipo.Location = new System.Drawing.Point(386, 289);
             this.btnBorraTipo.Name = "btnBorraTipo";
             this.btnBorraTipo.Size = new System.Drawing.Size(122, 35);
             this.btnBorraTipo.TabIndex = 22;
@@ -124,7 +126,7 @@
             this.btnSalirBorrarrTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalirBorrarrTipo.Image = global::PatronesDeDiseño.Properties.Resources.exit;
             this.btnSalirBorrarrTipo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalirBorrarrTipo.Location = new System.Drawing.Point(325, 224);
+            this.btnSalirBorrarrTipo.Location = new System.Drawing.Point(234, 360);
             this.btnSalirBorrarrTipo.Name = "btnSalirBorrarrTipo";
             this.btnSalirBorrarrTipo.Size = new System.Drawing.Size(88, 42);
             this.btnSalirBorrarrTipo.TabIndex = 23;
@@ -133,12 +135,24 @@
             this.btnSalirBorrarrTipo.UseVisualStyleBackColor = true;
             this.btnSalirBorrarrTipo.Click += new System.EventHandler(this.btnSalirBorrarrTipo_Click);
             // 
+            // dataGridBorrtejido
+            // 
+            this.dataGridBorrtejido.AllowUserToAddRows = false;
+            this.dataGridBorrtejido.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridBorrtejido.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridBorrtejido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridBorrtejido.Location = new System.Drawing.Point(75, 193);
+            this.dataGridBorrtejido.Name = "dataGridBorrtejido";
+            this.dataGridBorrtejido.Size = new System.Drawing.Size(269, 150);
+            this.dataGridBorrtejido.TabIndex = 64;
+            // 
             // FrmBorrarTipoDeTejer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.ClientSize = new System.Drawing.Size(538, 295);
+            this.ClientSize = new System.Drawing.Size(585, 414);
+            this.Controls.Add(this.dataGridBorrtejido);
             this.Controls.Add(this.btnSalirBorrarrTipo);
             this.Controls.Add(this.btnBorraTipo);
             this.Controls.Add(this.btnBuscarBorrarTipo);
@@ -152,6 +166,7 @@
             this.Text = "FrmBorrarTipoDeTejer";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridBorrtejido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,5 +182,6 @@
         private System.Windows.Forms.Button btnBuscarBorrarTipo;
         private System.Windows.Forms.Button btnBorraTipo;
         private System.Windows.Forms.Button btnSalirBorrarrTipo;
+        private System.Windows.Forms.DataGridView dataGridBorrtejido;
     }
 }

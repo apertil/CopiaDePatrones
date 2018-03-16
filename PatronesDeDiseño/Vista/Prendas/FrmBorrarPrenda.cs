@@ -27,10 +27,12 @@ namespace PatronesDeDiseño.Vista.Prendas
 
         private void btnBuscarBorrarTipoPrenda_Click(object sender, EventArgs e)
         {
-            ControlTipoDeprendas.BuscarExactoPrenda(txtBorrarTipoPrenda.Text.TrimStart().TrimEnd());
+            DataTable table = ControlTipoDeprendas.BuscarExactoPrenda(txtBorrarTipoPrenda.Text.TrimStart().TrimEnd());
             if (ControlTipDeTejer.Result)
             {
-               btnBorraTipoPrenda.Enabled = true;
+                dataGridBorrPrenda.AutoGenerateColumns = true;
+                dataGridBorrPrenda.DataSource = table;
+                btnBorraTipoPrenda.Enabled = true;
             }
             else
             {
@@ -40,16 +42,29 @@ namespace PatronesDeDiseño.Vista.Prendas
 
         private void btnBorraTipoPrenda_Click(object sender, EventArgs e)
         {
-            ControlTipoDeprendas.EliminarPrenda(PrendasViewModel.IdPren);
-            if (ControlTipDeTejer.Result)
+            DialogResult result = MessageBox.Show("Estás segura de que quieres borrar la Prenda?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (result == DialogResult.Yes)
             {
-                btnBorraTipoPrenda.Enabled = false;
-                MessageBox.Show(txtBorrarTipoPrenda.Text + Consts.BorradoPrenda, "Borrado Correcto", MessageBoxButtons.OK);
+                ControlTipoDeprendas.EliminarPrenda(PrendasViewModel.IdPren);
+           
+                
+                if (ControlTipDeTejer.Result)
+                {
+                    btnBorraTipoPrenda.Enabled = false;
+                    MessageBox.Show(txtBorrarTipoPrenda.Text + Consts.BorradoPrenda, "Borrado Correcto", MessageBoxButtons.OK);
+                    dataGridBorrPrenda.DataSource = null;
+                }
+                else
+                {
+                    btnBorraTipoPrenda.Enabled = false;
+                    MessageBox.Show(txtBorrarTipoPrenda.Text + Consts.BorradoErrorPrenda, "Borrado No Correcto", MessageBoxButtons.OK);
+                    dataGridBorrPrenda.DataSource = null;
+                }
             }
             else
             {
                 btnBorraTipoPrenda.Enabled = false;
-                MessageBox.Show(txtBorrarTipoPrenda.Text + Consts.BorradoErrorPrenda, "Borrado No Correcto", MessageBoxButtons.OK);
+                dataGridBorrPrenda.DataSource = null;
             }
 
         }
