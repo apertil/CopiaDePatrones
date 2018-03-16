@@ -29,7 +29,7 @@ namespace PatronesDeDiseño.Vista.Autores
             DataTable table = ControlAutores.ConsultarExactoAutores(txtModificarAutores.Text.TrimStart().TrimEnd());
             if (ControlAutores.Result)
             {
-                dataGridAutores.AutoGenerateColumns = false;
+                dataGridAutores.AutoGenerateColumns = true;
                 dataGridAutores.DataSource = table;
                 btnBuscarModificarAutor.Enabled = true;
             }

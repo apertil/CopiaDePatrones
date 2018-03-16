@@ -29,7 +29,7 @@ namespace PatronesDeDiseño.Vista.Genero
             DataTable table = ControlGeneroEdad.ConsultarExactoGenEdad(txtModificarGenero.Text.TrimEnd().TrimStart());
             if (ControlGeneroEdad.Result)
             {
-                dataGridGenero.AutoGenerateColumns = false;
+                dataGridGenero.AutoGenerateColumns = true;
                 dataGridGenero.DataSource = table;
                 btnBuscarModificarGenero.Enabled = true;
             }

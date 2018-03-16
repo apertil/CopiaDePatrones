@@ -29,7 +29,7 @@ namespace PatronesDeDiseño.Vista.Genero
 
             if (ControlGeneroEdad.Result)
             { 
-                dataGridConsultarGeneroEdad.AutoGenerateColumns = false;
+                dataGridConsultarGeneroEdad.AutoGenerateColumns = true;
                 dataGridConsultarGeneroEdad.DataSource = table;
             }
             else

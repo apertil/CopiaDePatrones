@@ -28,7 +28,7 @@ namespace PatronesDeDiseño.Vista.Autores
             DataTable table = ControlAutores.ConsultarAutor(txtConsultarAutor.Text.TrimStart().TrimEnd());
             if (ControlAutores.Result)
             {
-                dataGridConsultaAutores.AutoGenerateColumns = false;
+                dataGridConsultaAutores.AutoGenerateColumns = true;
                 dataGridConsultaAutores.DataSource = table;
                 txtConsultarAutor.Text = " ";
             }

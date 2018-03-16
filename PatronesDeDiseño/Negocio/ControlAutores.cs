@@ -91,7 +91,6 @@ namespace PatronesDeDiseño.Negocio
                         foreach (var item in ficheroAutPatron)
                         {
                             List<string> VistaAutor = new List<string>();
-                            
                             string a = item.NombreAutor.ToString();
                             VistaAutor.Add(a);
                             intermedio.Add(VistaAutor);
