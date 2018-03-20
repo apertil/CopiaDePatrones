@@ -23,6 +23,13 @@ namespace PatronesDeDiseño
         public int IdRevistas { get; set; }
         public string NombreRevista { get; set; }
         public string Autor { get; set; }
+        public string NombreAutor
+        {
+            get
+            { 
+                return NombreRevista + ", " + Autor;
+            }
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrones> Patrones { get; set; }

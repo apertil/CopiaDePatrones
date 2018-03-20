@@ -68,6 +68,7 @@
     <Compile Include="Negocio\ControlCaracteristicas.cs" />
     <Compile Include="Negocio\ControlGeneroEdad.cs" />
     <Compile Include="Negocio\ControlLanas.cs" />
+    <Compile Include="Negocio\ControlPatrones.cs" />
     <Compile Include="Negocio\ControlRevistas.cs" />
     <Compile Include="Negocio\ControlTipDeTejer.cs" />
     <Compile Include="Negocio\ControlTipoDeprendas.cs" />
@@ -105,6 +106,7 @@
     <Compile Include="ViewModel\AutorViewModel.cs" />
     <Compile Include="ViewModel\GeneroEdadViewModel.cs" />
     <Compile Include="ViewModel\LanasViewModel.cs" />
+    <Compile Include="ViewModel\PatronesViewModel.cs" />
     <Compile Include="ViewModel\PrendasViewModel.cs" />
     <Compile Include="ViewModel\RevistasViewModel.cs" />
     <Compile Include="ViewModel\TCaractViewModel.cs" />
@@ -218,6 +220,12 @@
     </Compile>
     <Compile Include="Vista\Lanas\FrmInsLana.Designer.cs">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Patrones\FrmInsertarPatron.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vista\Patrones\FrmInsertarPatron.Designer.cs">
+      <DependentUpon>FrmInsertarPatron.cs</DependentUpon>
     </Compile>
     <Compile Include="Vista\Prendas\FrmBorrarPrenda.cs">
       <SubType>Form</SubType>
@@ -354,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Lanas\FrmInsLana.resx">
       <DependentUpon>FrmInsLana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vista\Patrones\FrmInsertarPatron.resx">
+      <DependentUpon>FrmInsertarPatron.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vista\Prendas\FrmBorrarPrenda.resx">
       <DependentUpon>FrmBorrarPrenda.cs</DependentUpon>

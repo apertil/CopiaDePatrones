@@ -17,7 +17,7 @@
             <PropertyRef Name="IdGenEd" />
           </Key>
           <Property Name="IdGenEd" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="GenEdad" Type="nvarchar" MaxLength="20" />
+          <Property Name="GenEdad" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Lanas">
           <Key>
@@ -361,7 +361,7 @@
             <PropertyRef Name="IdGenEd" />
           </Key>
           <Property Name="IdGenEd" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="GenEdad" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="GenEdad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Patrones" Relationship="ModelosPuntoModel.FK_Patrones_GeneroEdad" FromRole="GeneroEdad" ToRole="Patrones" />
         </EntityType>
         <Association Name="FK_Patrones_GeneroEdad">

@@ -2,6 +2,7 @@
 using PatronesDeDiseño.Vista.Caracteristicas;
 using PatronesDeDiseño.Vista.Genero;
 using PatronesDeDiseño.Vista.Lanas;
+using PatronesDeDiseño.Vista.Patrones;
 using PatronesDeDiseño.Vista.Prendas;
 using PatronesDeDiseño.Vista.Revistas;
 using PatronesDeDiseño.Vista.TiposPunto;
@@ -39,7 +40,8 @@ namespace PatronesDeDiseño.Vista
         #region "4.-Métodos de patrones"
         private void nuevoPatrónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcion no implementada", "Paciencia", MessageBoxButtons.OK);
+            FrmInsertarPatron insPat = new FrmInsertarPatron();
+            insPat.ShowDialog();
         }
 
         private void consultarPatronToolStripMenuItem_Click(object sender, EventArgs e)

@@ -12,7 +12,8 @@ namespace PatronesDeDiseño
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        [MTAThread]
+        //[MTAThread]
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
